@@ -1,5 +1,5 @@
 import { Container } from "@/app/components/ui/Container";
-import { Button } from "@/app/components/ui/Button";
+import { ContactForm } from "@/app/components/ContactForm";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { site } from "@/app/data/site";
@@ -22,51 +22,52 @@ export function Contact() {
             />
             <div className="pointer-events-none absolute inset-0 glow-accent" aria-hidden="true" />
 
-            <div className="relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+            <div className="relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
               <div>
                 <Eyebrow index="06">Contact</Eyebrow>
                 <h2 className="mt-5 max-w-lg text-h2 text-gradient-ink">
                   Tell us what you are building
                 </h2>
                 <p className="mt-6 max-w-md text-lead text-ink-dim">
-                  Book a free 30-minute call. We will map the project, point out the
-                  fastest path to something live, and send you a written plan — whether
-                  or not you work with us.
+                  Send the form or reach out directly. We will map the project, point
+                  out the fastest path to something live, and send you a written plan —
+                  whether or not you work with us.
                 </p>
-                <Button href={site.emailHref} size="lg" className="mt-9">
-                  Book a free call
-                </Button>
+
+                <dl className="mt-10 flex flex-col divide-y divide-line border-y border-line">
+                  {channels.map((channel) => (
+                    <div
+                      key={channel.label}
+                      className="flex items-center justify-between gap-6 py-5"
+                    >
+                      <dt className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-ink-faint">
+                        {channel.label}
+                      </dt>
+                      <dd>
+                        <a
+                          href={channel.href}
+                          className="group flex items-center gap-2 text-[0.95rem] text-ink transition-colors hover:text-accent"
+                          {...(channel.external
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : null)}
+                        >
+                          {channel.value}
+                          <span
+                            className="text-ink-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-accent"
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
+                        </a>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
 
-              <dl className="flex flex-col divide-y divide-line border-y border-line lg:mt-2">
-                {channels.map((channel) => (
-                  <div
-                    key={channel.label}
-                    className="flex items-center justify-between gap-6 py-5"
-                  >
-                    <dt className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-ink-faint">
-                      {channel.label}
-                    </dt>
-                    <dd>
-                      <a
-                        href={channel.href}
-                        className="group flex items-center gap-2 text-[0.95rem] text-ink transition-colors hover:text-accent"
-                        {...(channel.external
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : null)}
-                      >
-                        {channel.value}
-                        <span
-                          className="text-ink-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-accent"
-                          aria-hidden="true"
-                        >
-                          →
-                        </span>
-                      </a>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="rounded-card border border-line bg-canvas/40 p-6 sm:p-8">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </Reveal>
