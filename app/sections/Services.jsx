@@ -1,100 +1,65 @@
-"use client";
-
 import Image from "next/image";
-import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Container } from "@/app/components/ui/Container";
 import { Card } from "@/app/components/ui/Card";
-import { SectionTitle } from "@/app/components/ui/SectionTitle";
-import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
-import { StaggerReveal } from "@/app/components/animation/StaggerReveal";
-
-const serviceCards = [
-  {
-    title: "3D Configurators",
-    description:
-      "Interactive product configurators that let customers customize, preview, and buy faster.",
-    image:
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80",
-    arrow: "down-right",
-    span: "row-span-1",
-  },
-  {
-    title: "Web & E-commerce",
-    description:
-      "Websites and online stores built to convert visitors into customers.",
-    image:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
-    arrow: "up-right",
-    span: "row-span-1",
-    horizontal: true,
-  },
-  {
-    title: "Social & Design",
-    description:
-      "Content, posts, and visuals that grow your audience and make your brand memorable.",
-    image:
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80",
-    arrow: "up-right",
-    span: "row-span-2",
-  },
-];
-
-function ServiceCard({ card }) {
-  const Arrow = card.arrow === "down-right" ? ArrowDownRight : ArrowUpRight;
-  return (
-    <Card
-      className="group relative overflow-hidden border-border bg-surface p-5 flex flex-col"
-    >
-      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-xl">
-        <Image
-          src={card.image}
-          alt={card.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-      </div>
-      <div className="flex flex-1 flex-col">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-xl sm:text-2xl font-semibold text-white">{card.title}</h3>
-          <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors group-hover:bg-white/10">
-            <Arrow className="h-5 w-5" />
-          </div>
-        </div>
-        <p className="mt-2 text-sm leading-relaxed text-white/70">{card.description}</p>
-      </div>
-    </Card>
-  );
-}
+import { Reveal } from "@/app/components/ui/Reveal";
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
+import { services } from "@/app/data/site";
 
 export function Services() {
   return (
-    <section id="services" className="bg-background py-20 lg:py-28">
+    <section id="services" className="scroll-mt-24 py-24 lg:py-32">
       <Container>
-        <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <ScrollReveal>
-            <SectionTitle className="max-w-md">
-              Systems built to perform
-            </SectionTitle>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1} className="max-w-sm lg:text-right">
-            <p className="text-sm leading-relaxed text-white/70">
-              Every service is engineered around a single business result — more leads, more sales, and a stronger brand.
-            </p>
-          </ScrollReveal>
-        </div>
+        <SectionHeading
+          index="01"
+          eyebrow="Services"
+          title="Three ways we help brands sell"
+          lead="Every engagement is scoped around one business result — more qualified leads, more completed checkouts, or a brand people remember."
+        />
 
-        <StaggerReveal
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
-          childClassName="h-full"
-          stagger={0.15}
-        >
-          <div className="flex flex-col gap-5">
-            <ServiceCard card={serviceCards[0]} />
-            <ServiceCard card={serviceCards[1]} />
-          </div>
-          <ServiceCard card={serviceCards[2]} />
-        </StaggerReveal>
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <li key={service.id}>
+              <Reveal delay={index * 0.08} className="h-full">
+                <Card interactive className="flex h-full flex-col overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
+                      className="object-cover opacity-90"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-canvas/80 px-2.5 py-1 font-mono text-[0.68rem] text-accent backdrop-blur-sm">
+                      {service.index}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-h3 text-ink">{service.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-dim">
+                      {service.summary}
+                    </p>
+
+                    <ul className="mt-6 flex flex-col gap-2.5 border-t border-line pt-5">
+                      {service.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-center gap-2.5 text-[0.82rem] text-ink-faint"
+                        >
+                          <span
+                            className="h-1 w-1 shrink-0 rounded-full bg-accent"
+                            aria-hidden="true"
+                          />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

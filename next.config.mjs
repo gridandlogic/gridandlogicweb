@@ -2,17 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-      },
-    ],
+    // All imagery is local. next/image automatically skips optimization for
+    // `.svg` sources (the logo), so the raster screenshots get resized and
+    // served as WebP while the vector mark passes through untouched.
+    formats: ["image/webp"],
   },
 };
 

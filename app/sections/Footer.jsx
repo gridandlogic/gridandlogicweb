@@ -1,111 +1,114 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
-import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
+import { Logo } from "@/app/components/ui/Logo";
+import { nav, site, socials } from "@/app/data/site";
 
-const SocialIcons = {
-  Facebook: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-    </svg>
+const SocialGlyph = {
+  Instagram: (
+    <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.67 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.15-3.23 1.67-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.84a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z" />
   ),
-  Instagram: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-    </svg>
+  Facebook: (
+    <path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07Z" />
   ),
-  Threads: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-      <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.495c-1.02-3.248-2.6-5.38-5.157-6.657-1.486-.72-3.308-1.093-5.413-1.11-3.013.022-5.32.73-6.854 2.106C1.438 5.578.595 8.13.569 11.999c.025 3.874.868 6.428 2.502 8.09 1.533 1.376 3.84 2.084 6.854 2.106 2.104-.017 3.927-.39 5.416-1.11 2.583-1.292 4.166-3.442 5.147-6.811l2.042.478c-1.113 3.643-2.832 6.008-5.41 7.432-2.048 1.04-4.52 1.595-7.074 1.616zm-.174-9.344c-2.042-.161-3.56-1.224-4.323-3.072-.46-1.147-.5-2.49-.117-3.78.346-1.177 1.052-2.207 2.06-2.986 1.302-1.006 2.918-1.46 4.79-1.352 2.903.163 5.018 1.8 5.69 4.472.136.52.205 1.078.205 1.657 0 .163-.005.326-.014.49l-.002.047c-.062 1.051-.367 1.994-.89 2.74-.01.014-.02.028-.03.042-.908 1.298-2.284 2.06-3.88 2.163l-.489-.381zm5.287-3.36c-.17-1.68-1.202-2.923-2.901-3.495-.566-.196-1.2-.295-1.884-.295-1.69 0-3.065.636-3.88 1.791-.56.794-.75 1.792-.532 2.816.246 1.135.91 1.95 1.93 2.373.126.052.256.098.389.139l-.19-.147c.97.294 2.06.25 3.067-.127 1.44-.56 2.26-1.746 2.37-3.349.003-.047.006-.095.008-.142.002-.057.003-.114.003-.171 0-.18-.012-.358-.035-.532z" />
-    </svg>
+  Threads: (
+    <path d="M16.2 11.15c-.1-.05-.2-.09-.3-.13-.18-3.26-1.96-5.13-4.95-5.15h-.04c-1.79 0-3.28.77-4.19 2.16l1.64 1.13c.68-1.04 1.75-1.26 2.55-1.26h.03c1 .01 1.75.3 2.24.86.36.41.6.98.72 1.7-.9-.15-1.87-.2-2.9-.13-2.92.17-4.8 1.87-4.67 4.24.06 1.2.66 2.23 1.69 2.9.87.57 1.99.85 3.15.79 1.54-.08 2.72-.67 3.55-1.73.63-.81 1.03-1.86 1.2-3.18.72.43 1.25 1 1.55 1.68.5 1.16.53 3.07-1.02 4.62-1.36 1.36-3 1.94-5.48 1.96-2.76-.02-4.84-.9-6.19-2.61C5.5 17.36 4.85 15.14 4.83 12c.02-3.14.67-5.36 1.93-6.9C8.11 3.39 10.19 2.5 12.95 2.5c2.78.02 4.88.91 6.24 2.63.67.85 1.17 1.91 1.5 3.15l1.93-.51c-.4-1.52-1.03-2.84-1.89-3.93C18.98 1.65 16.35.52 12.96.5h-.01C9.57.52 6.97 1.65 5.22 3.85 3.67 5.81 2.87 8.53 2.85 11.99v.02c.02 3.46.82 6.18 2.37 8.14 1.75 2.2 4.35 3.33 7.74 3.35h.01c3.02-.02 5.15-.81 6.9-2.56 2.29-2.29 2.22-5.16 1.47-6.92-.54-1.26-1.57-2.29-2.98-2.97Zm-4.9 5.14c-1.28.07-2.61-.5-2.68-1.75-.05-.93.66-1.96 2.76-2.08.24-.01.48-.02.71-.02.76 0 1.48.07 2.13.21-.24 3.03-1.66 3.57-2.92 3.64Z" />
   ),
 };
 
-const navigation = [
-  { label: "Work", href: "#works" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
-const information = [
-  { label: "0337 4992211", href: "tel:+923374992211" },
-  { label: "0337 4992211 (WhatsApp)", href: "https://wa.me/923374992211" },
-  { label: "gridandlogic@gmail.com", href: "mailto:gridandlogic@gmail.com" },
-];
-
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative bg-surface text-white border-t border-border/50 overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
-      <Container className="relative z-10">
-        <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 py-16 lg:py-20">
-            <div className="lg:col-span-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white">
-                <Image src="/Grid%20%26%20Logic%20(LOGO).svg" alt="Grid &amp; Logic Logo" width={36} height={36} unoptimized style={{ filter: "brightness(0) saturate(100%) invert(1) sepia(1) saturate(5) hue-rotate(180deg)" }} />
-                Grid &amp; Logic
-              </Link>
-              <p className="mt-4 text-sm leading-relaxed text-white/80 max-w-xs">
-                Grid &amp; Logic designs and builds 3D websites, product configurators, and ecommerce for growing brands — all built to convert.
-              </p>
-            </div>
+    <footer className="border-t border-line bg-surface">
+      <Container>
+        <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12 lg:py-20">
+          <div className="lg:col-span-5">
+            <a href="#home" aria-label={`${site.name} — home`} className="inline-flex">
+              <Logo />
+            </a>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-dim">
+              {site.shortDescription}
+            </p>
 
-            <div className="lg:col-span-2">
-              <h4 className="text-base font-semibold text-white">Navigation</h4>
-              <ul className="mt-5 flex flex-col gap-3">
-                {navigation.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-4">
-              <h4 className="text-base font-semibold text-white">Information</h4>
-              <ul className="mt-5 flex flex-col gap-3">
-                {information.map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 flex items-center gap-3">
-                {[
-                  { Icon: SocialIcons.Facebook, href: "https://www.facebook.com/profile.php?id=61592258005096", label: "Facebook" },
-                  { Icon: SocialIcons.Instagram, href: "https://www.instagram.com/gridandlogic/", label: "Instagram" },
-                  { Icon: SocialIcons.Threads, href: "https://www.threads.com/@gridandlogic", label: "Threads" },
-                ].map(({ Icon, href, label }) => (
+            <ul className="mt-7 flex items-center gap-2.5">
+              {socials.map((social) => (
+                <li key={social.label}>
                   <a
-                    key={label}
-                    href={href}
+                    href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/10"
-                    aria-label={label}
+                    aria-label={social.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-dim transition-colors hover:border-accent hover:text-accent"
                   >
-                    <Icon />
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-[15px] w-[15px]">
+                      {SocialGlyph[social.label]}
+                    </svg>
                   </a>
-                ))}
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </ScrollReveal>
+
+          <nav aria-label="Footer" className="lg:col-span-3">
+            <h2 className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-ink-faint">
+              Navigate
+            </h2>
+            <ul className="mt-5 flex flex-col gap-3">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-sm text-ink-dim transition-colors hover:text-ink"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="lg:col-span-4">
+            <h2 className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-ink-faint">
+              Get in touch
+            </h2>
+            <ul className="mt-5 flex flex-col gap-3">
+              <li>
+                <a
+                  href={site.emailHref}
+                  className="text-sm text-ink-dim transition-colors hover:text-ink"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.phoneHref}
+                  className="text-sm text-ink-dim transition-colors hover:text-ink"
+                >
+                  {site.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-dim transition-colors hover:text-ink"
+                >
+                  WhatsApp
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-line py-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
+            © {year} {site.name}
+          </p>
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
+            Designed &amp; built in-house
+          </p>
+        </div>
       </Container>
     </footer>
   );

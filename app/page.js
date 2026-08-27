@@ -1,46 +1,25 @@
-import { Header } from "@/app/sections/Header";
 import { Hero } from "@/app/sections/Hero";
-import { About } from "@/app/sections/About";
-import { Globe } from "@/app/sections/Globe";
+import { CapabilityStrip } from "@/app/sections/CapabilityStrip";
 import { Services } from "@/app/sections/Services";
-import { Works } from "@/app/sections/Works";
+import { Work } from "@/app/sections/Work";
 import { Process } from "@/app/sections/Process";
-import { Testimonials } from "@/app/sections/Testimonials";
-import { News } from "@/app/sections/News";
-import { CTA } from "@/app/sections/CTA";
-import { Footer } from "@/app/sections/Footer";
-import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
+import { Studio } from "@/app/sections/Studio";
+import { Testimonial } from "@/app/sections/Testimonial";
+import { Journal } from "@/app/sections/Journal";
+import { Contact } from "@/app/sections/Contact";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 bg-background">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <ScrollReveal direction="right">
-          <About />
-        </ScrollReveal>
-        <Globe />
-        <ScrollReveal direction="left">
-          <Services />
-        </ScrollReveal>
-        <ScrollReveal direction="right">
-          <Works />
-        </ScrollReveal>
-        <ScrollReveal direction="left">
-          <Process />
-        </ScrollReveal>
-        <ScrollReveal direction="right">
-          <Testimonials />
-        </ScrollReveal>
-        <ScrollReveal direction="left">
-          <News />
-        </ScrollReveal>
-        <ScrollReveal direction="right">
-          <CTA />
-        </ScrollReveal>
-      </main>
-      <Footer />
-    </div>
+    <main id="main">
+      <Hero />
+      <CapabilityStrip />
+      <Services />
+      <Work />
+      <Process />
+      <Studio />
+      <Testimonial />
+      <Journal />
+      <Contact />
+    </main>
   );
 }

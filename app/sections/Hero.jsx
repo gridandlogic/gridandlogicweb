@@ -1,140 +1,108 @@
-"use client";
-
-import { useRef, useEffect } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "motion/react";
 import { Container } from "@/app/components/ui/Container";
 import { Button } from "@/app/components/ui/Button";
-import { Card } from "@/app/components/ui/Card";
-import { Badge } from "@/app/components/ui/Badge";
-import { EncryptedText } from "@/app/components/ui/encrypted-text";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { Eyebrow } from "@/app/components/ui/Eyebrow";
+import { Reveal } from "@/app/components/ui/Reveal";
+import { heroStats, site } from "@/app/data/site";
 
 export function Hero() {
-  const sectionRef = useRef(null);
-  const creativeRef = useRef(null);
-  const agencyRef = useRef(null);
-  const metaRef = useRef(null);
-  const bottomCardsRef = useRef(null);
-
-  const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 500], [0, 150]);
-  const bgScale = useTransform(scrollY, [0, 500], [1, 1.1]);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      tl.from([creativeRef.current, agencyRef.current], {
-        y: 80,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.25,
-        ease: "power3.out",
-      })
-        .from(
-          metaRef.current,
-          { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.6"
-        )
-        .from(
-          bottomCardsRef.current.children,
-          { y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: "power3.out" },
-          "-=0.5"
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      id="home"
-      ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-background pt-20"
-    >
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: bgY, scale: bgScale }}
-      >
-        <Image
-          src="/images/Mask-group-8-1.png"
-          alt="Hero background"
-          fill
-          className="object-cover opacity-70"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 gradient-glow" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
-      </motion.div>
+    <section id="home" className="relative isolate overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+      {/* Brand device: a measured grid fading out toward the edges. */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gridlines mask-radial-fade"
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 glow-accent" aria-hidden="true" />
 
-      <Container className="relative z-10 flex min-h-[calc(100vh-5rem)] flex-col justify-center py-16 lg:py-24">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
-          <div className="flex-1">
-            <h1
-              ref={creativeRef}
-              className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold leading-[0.9] tracking-tight text-white text-3d"
-            >
-              Build
-            </h1>
-          </div>
+      <Container>
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div>
+            <Reveal>
+              <Eyebrow>3D web · Configurators · Ecommerce</Eyebrow>
+            </Reveal>
 
-          <div ref={metaRef} className="flex justify-end lg:pt-8">
-            <div className="flex items-center gap-3">
-              <Badge className="glow-3d">3D Web - Configurators - E-commerce</Badge>
-              <button className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/10">
-                <ArrowUpRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-        </div>
+            <Reveal delay={0.06}>
+              <h1 className="mt-7 text-display text-balance">
+                <span className="text-gradient-ink">We design the grid.</span>
+                <br />
+                <span className="text-ink-dim">We build the </span>
+                <span className="text-accent">logic</span>
+                <span className="text-ink-dim">.</span>
+              </h1>
+            </Reveal>
 
-        <div className="mt-8 flex flex-col lg:flex-row items-end justify-between gap-10">
-          <div ref={bottomCardsRef} className="flex flex-col gap-4 max-w-sm">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <Card className="px-5 py-4">
-                <p className="text-sm text-white/80 max-w-[240px]">
-                  <EncryptedText
-                    text="3D websites, product configurators, and online stores built to help brands sell more and ship faster."
-                    encryptedClassName="text-white/30"
-                    revealedClassName="text-white/80"
-                    revealDelayMs={20}
-                  />
-                </p>
-              </Card>
-              <Button className="shrink-0" onClick={() => { if (typeof window !== "undefined") window.location.href = "mailto:gridandlogic@gmail.com?subject=Grid%20and%20Logic%20for%20call"; }}>Book a call</Button>
-            </div>
+            <Reveal delay={0.12}>
+              <p className="mt-7 max-w-lg text-lead text-ink-dim">
+                {site.name} is a digital product studio making 3D websites, product
+                configurators, and online stores for brands that need to sell — not
+                just look good.
+              </p>
+            </Reveal>
 
-            <Card className="flex items-center gap-4 px-5 py-4 w-fit mt-2">
-              <span className="text-2xl font-bold text-white">31K</span>
-              <div className="text-xs leading-tight text-white/80">
-                <span className="block font-medium">Trusted</span>
-                <span className="block">Agents</span>
+            <Reveal delay={0.18}>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <Button href={site.emailHref} size="lg">
+                  Book a free call
+                </Button>
+                <Button href="#work" size="lg" variant="outline">
+                  See the work
+                </Button>
               </div>
-            </Card>
+            </Reveal>
+
+            <Reveal delay={0.24}>
+              <dl className="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-7">
+                {heroStats.map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="sr-only">{stat.label}</dt>
+                    <dd>
+                      <span className="block text-2xl font-semibold tracking-tight text-ink">
+                        {stat.value}
+                      </span>
+                      <span className="mt-1.5 block text-xs leading-snug text-ink-faint">
+                        {stat.label}
+                      </span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
           </div>
 
-          <h2
-            ref={agencyRef}
-            className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold leading-[0.9] tracking-tight text-white text-3d"
-          >
-            Ship
-          </h2>
+          {/* A real shipped configurator, framed as a browser window. */}
+          <Reveal delay={0.1} y={26} className="relative">
+            <div
+              className="absolute -inset-6 -z-10 rounded-[2rem] bg-accent/8 blur-2xl"
+              aria-hidden="true"
+            />
+            <figure className="overflow-hidden rounded-panel border border-line bg-panel shadow-2xl shadow-black/60">
+              <div className="flex items-center gap-2 border-b border-line px-4 py-3.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-line-bright" aria-hidden="true" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line-bright" aria-hidden="true" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line-bright" aria-hidden="true" />
+                <span className="ml-3 font-mono text-[0.68rem] text-ink-faint">
+                  configurator · live
+                </span>
+              </div>
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/sofa-configrator.png"
+                  alt="A sofa product configurator running in the browser, showing material and colour options"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="flex items-center justify-between gap-4 border-t border-line px-5 py-4">
+                <span className="text-sm text-ink">Real-time 3D product configurator</span>
+                <span className="font-mono text-[0.68rem] uppercase tracking-widest text-accent">
+                  Shipped
+                </span>
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </Container>
     </section>

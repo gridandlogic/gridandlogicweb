@@ -1,18 +1,17 @@
 import { cn } from "@/app/lib/utils";
 
-export function Card({ className, children, variant = "default", ...props }) {
+export function Card({ className, children, as: Component = "div", interactive = false, ...props }) {
   return (
-    <div
+    <Component
       className={cn(
-        "rounded-[1.25rem] tilt-3d",
-        variant === "default" && "border border-border bg-surface",
-        variant === "elevated" && "border border-border-strong bg-surface-elevated",
-        variant === "primary" && "border border-primary/40 bg-surface",
+        "relative rounded-card border border-line bg-surface",
+        interactive &&
+          "transition-colors duration-300 hover:border-line-bright hover:bg-panel",
         className
       )}
       {...props}
     >
       {children}
-    </div>
+    </Component>
   );
 }

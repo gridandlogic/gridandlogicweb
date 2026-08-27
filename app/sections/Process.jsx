@@ -1,85 +1,47 @@
-"use client";
-
-import Image from "next/image";
 import { Container } from "@/app/components/ui/Container";
-import { Card } from "@/app/components/ui/Card";
-import { SectionTitle } from "@/app/components/ui/SectionTitle";
-import { StaggerReveal } from "@/app/components/animation/StaggerReveal";
-import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
-
-const steps = [
-  {
-    number: "01",
-    title: "Discover",
-    description: "We learn about your business, goals, and target audience.",
-    active: true,
-  },
-  {
-    number: "02",
-    title: "Define",
-    description: "We define the right solution and a clear project plan.",
-  },
-  {
-    number: "03",
-    title: "Design",
-    description: "We create designs and interfaces that match your brand.",
-  },
-  {
-    number: "04",
-    title: "Develop",
-    description: "We build, test, and launch your website or store.",
-  },
-];
+import { Reveal } from "@/app/components/ui/Reveal";
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
+import { processSteps } from "@/app/data/site";
 
 export function Process() {
   return (
-    <section id="process" className="bg-background py-20 lg:py-28">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <StaggerReveal className="grid grid-cols-2 gap-4" stagger={0.12}>
-            {steps.map((step, index) => (
-              <Card
-                key={step.number}
-                variant={step.active ? "primary" : "default"}
-                className={`p-6 flex flex-col justify-between min-h-[180px] ${
-                  index === 0 ? "lg:-mt-6" : ""
-                }`}
-              >
-                <span
-                  className={`text-5xl md:text-6xl font-bold leading-none ${
-                    step.active ? "text-primary" : "text-white/30"
-                  }`}
-                >
-                  {step.number}
-                </span>
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold text-white">{step.title}</h3>
-                  <p className="mt-1 text-sm text-white/70">{step.description}</p>
-                </div>
-              </Card>
-            ))}
-          </StaggerReveal>
+    <section
+      id="process"
+      className="relative scroll-mt-24 overflow-hidden border-t border-line py-24 lg:py-32"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gridlines-sm mask-fade-b opacity-60"
+        aria-hidden="true"
+      />
 
-          <div className="flex flex-col gap-6">
-            <ScrollReveal>
-              <SectionTitle>Our Work Process</SectionTitle>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <p className="text-base leading-relaxed text-white/70 max-w-md">
-                We follow a simple, proven process: discover your needs, define the right solution, design the experience, and develop the final product.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2} className="relative aspect-square w-full max-w-md rounded-[1.5rem] overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80"
-                alt="Creative process abstract"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </ScrollReveal>
-          </div>
-        </div>
+      <Container>
+        <SectionHeading
+          index="03"
+          eyebrow="How we work"
+          title="Four steps, no surprises"
+          lead="You always know what is happening, what it costs, and when it lands. No black boxes and no open-ended timelines."
+        />
+
+        <ol className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <li key={step.number}>
+              <Reveal delay={index * 0.08}>
+                {/* Hairline + node reads as a single track across the row on desktop. */}
+                <div className="relative mb-6 h-px w-full bg-line">
+                  <span
+                    className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                </div>
+                <span className="font-mono text-sm text-accent">{step.number}</span>
+                <h3 className="mt-4 text-h3 text-ink">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-dim">
+                  {step.description}
+                </p>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </Container>
     </section>
   );

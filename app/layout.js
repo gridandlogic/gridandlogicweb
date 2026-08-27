@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SmoothScroll } from "@/app/components/animation/SmoothScroll";
+import { Header } from "@/app/components/Header";
+import { Footer } from "@/app/sections/Footer";
+import { site } from "@/app/data/site";
+import { siteUrl } from "@/app/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,35 +17,66 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const title = `${site.name} — 3D websites, configurators & ecommerce`;
+
 export const metadata = {
-  title: "Grid & Logic",
-  description:
-    "Grid & Logic — 3D websites, product configurators, and ecommerce built to ship for growing brands.",
-  keywords: ["3D websites", "product configurators", "ecommerce", "web design", "Grid & Logic"],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: `%s — ${site.name}`,
+  },
+  description: site.shortDescription,
+  keywords: [
+    "3D websites",
+    "product configurator",
+    "WebGL",
+    "ecommerce development",
+    "Next.js studio",
+    "Grid & Logic",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title,
+    description: site.shortDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: site.shortDescription,
+  },
   icons: {
-    icon: { url: "/Grid%20%26%20Logic%20(LOGO).svg", type: "image/svg+xml" },
-    shortcut: { url: "/Grid%20%26%20Logic%20(LOGO).svg", type: "image/svg+xml" },
+    icon: [{ url: site.logo, type: "image/svg+xml" }],
+    shortcut: [{ url: site.logo, type: "image/svg+xml" }],
   },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#020613",
+  themeColor: "#05070b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body
-      suppressHydrationWarning
-      className="min-h-full flex flex-col bg-background text-foreground"
-    >
-        <SmoothScroll>{children}</SmoothScroll>
+      <body className="min-h-dvh antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-canvas"
+        >
+          Skip to content
+        </a>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );
