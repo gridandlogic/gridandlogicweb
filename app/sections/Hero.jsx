@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Container } from "@/app/components/ui/Container";
 import { Button } from "@/app/components/ui/Button";
-import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
+import { Reveal } from "@/app/components/ui/Reveal";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -51,19 +51,19 @@ export function Hero() {
 
       <Container className="relative z-10 flex min-h-[calc(100vh-5rem)] flex-col justify-center py-20 lg:py-32">
         <div className="hero-content max-w-4xl">
-          <ScrollReveal>
+          <Reveal>
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white mb-6">
               Digital work that moves your business forward.
             </h1>
-          </ScrollReveal>
+          </Reveal>
 
-          <ScrollReveal delay={0.15}>
+          <Reveal delay={0.15}>
             <p className="text-lg sm:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
               Grid & Logic designs and builds 3D websites, product configurators, and ecommerce stores for businesses that want to look sharp and grow steadily.
             </p>
-          </ScrollReveal>
+          </Reveal>
 
-          <ScrollReveal delay={0.3} className="flex flex-col sm:flex-row gap-4">
+          <Reveal delay={0.3} className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg"
               onClick={() => { if (typeof window !== "undefined") window.location.href = "mailto:info@gridandlogic.com?subject=Project%20enquiry"; }}
@@ -77,7 +77,7 @@ export function Hero() {
             >
               Explore Services
             </Button>
-          </ScrollReveal>
+          </Reveal>
         </div>
       </Container>
     </section>
