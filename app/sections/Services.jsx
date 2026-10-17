@@ -8,22 +8,24 @@ import { site } from "@/app/data/site";
 
 const services = [
   {
-    title: "3D Configurators",
-    description: "Real-time product configurators that let customers customize, preview, and buy faster.",
-    image: "/images/sofa-configrator.png",
-    imageAlt: "Sofa configurator interface",
+    title: "3D Configurator",
+    description: "Real-time product customization that increases conversion and reduces returns.",
+    link: "#contact",
+  },
+  {
+    title: "AR Previews",
+    description: "Augmented reality experiences that let customers see products in their space.",
+    link: "#contact",
+  },
+  {
+    title: "AI Integration",
+    description: "Smart recommendations and automated workflows powered by artificial intelligence.",
+    link: "#contact",
   },
   {
     title: "Web & Ecommerce",
-    description: "Websites and online stores built to convert visitors into customers.",
-    image: "/images/ecomerce%20website.png",
-    imageAlt: "Ecommerce storefront",
-  },
-  {
-    title: "Brand & Content",
-    description: "Content, posts, and visuals that grow your audience and make your brand memorable.",
-    image: "/images/image-36.png",
-    imageAlt: "Brand design samples",
+    description: "High-performance websites and stores built to convert visitors into customers.",
+    link: "#contact",
   },
 ];
 
@@ -33,41 +35,29 @@ export function Services() {
       <Container>
         <SectionHeading
           index="01"
-          eyebrow="Services"
-          title="Everything you need to get online and grow"
-          lead="Three services, one team. Choose one, or let us handle the whole thing."
+          eyebrow="Services & Expertise"
+          title="Systems built to perform"
+          lead="Every service is engineered around a single business result, so your investment turns into measurable growth."
         />
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <li key={service.title}>
               <Reveal delay={index * 0.08} className="h-full">
-                <Card interactive className="flex h-full flex-col overflow-hidden">
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
-                    <Image
-                      src={service.image}
-                      alt={service.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
-                      className="object-cover opacity-90"
-                    />
-                  </div>
+                <Card interactive className="flex h-full flex-col p-6 border border-line bg-surface hover:border-accent/50 transition-colors">
+                  <h3 className="text-h3 text-ink mb-3">{service.title}</h3>
+                  <p className="text-sm leading-relaxed text-ink-dim mb-6 flex-1">
+                    {service.description}
+                  </p>
 
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="text-h3 text-ink">{service.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-dim">
-                      {service.description}
-                    </p>
-
-                    <Button 
-                      href={site.emailHref} 
-                      variant="outline" 
-                      size="sm" 
-                      className="mt-6 w-full"
-                    >
-                      Start a Project
-                    </Button>
-                  </div>
+                  <Button 
+                    href={service.link} 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full"
+                  >
+                    Learn more
+                  </Button>
                 </Card>
               </Reveal>
             </li>

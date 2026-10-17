@@ -26,7 +26,7 @@ export function Footer() {
               <Logo />
             </a>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-dim">
-              {site.shortDescription}
+              Grid & Logic designs and builds intelligent digital products for growth-stage brands.
             </p>
 
             <ul className="mt-7 flex items-center gap-2.5">
@@ -106,7 +106,7 @@ export function Footer() {
             © {year} {site.name}
           </p>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
-            Designed &amp; built in-house
+            Remote-first, global reach
           </p>
         </div>
       </Container>

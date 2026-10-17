@@ -18,30 +18,25 @@ export function Process() {
         <SectionHeading
           index="03"
           eyebrow="How we work"
-          title="Four clear steps, from first call to ongoing support"
-          lead="You always know what is happening, what it costs, and when it lands. No black boxes and no open-ended timelines."
+          title="Ready to build something intelligent?"
+          lead="Book a free 30-minute discovery call. We'll map your project, identify the fastest path to value, and send you a clear plan."
         />
 
-        <ol className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, index) => (
-            <li key={step.number}>
-              <Reveal delay={index * 0.08}>
-                {/* Hairline + node reads as a single track across the row on desktop. */}
-                <div className="relative mb-6 h-px w-full bg-line">
-                  <span
-                    className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent"
-                    aria-hidden="true"
-                  />
-                </div>
-                <span className="font-mono text-sm text-accent">{step.number}</span>
-                <h3 className="mt-4 text-h3 text-ink">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-dim">
-                  {step.description}
-                </p>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-12 max-w-2xl">
+          <Reveal>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-canvas font-semibold rounded-full hover:bg-accent/90 transition-colors"
+            >
+              Book a free discovery call
+            </a>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-4 text-sm text-ink-dim">
+              No pitch. No obligation. Just a clear next step.
+            </p>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

@@ -50,33 +50,58 @@ export function Hero() {
       </motion.div>
 
       <Container className="relative z-10 flex min-h-[calc(100vh-5rem)] flex-col justify-center py-20 lg:py-32">
-        <div className="hero-content max-w-4xl">
+        <div className="hero-content max-w-5xl">
           <Reveal>
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-mono text-accent border border-accent/30 rounded-full">
+              (We are Grid & Logic)
+            </span>
+          </Reveal>
+
+          <Reveal delay={0.1}>
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white mb-6">
-              Digital work that moves your business forward.
+              3D product configurator development for brands that want to convert.
             </h1>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <p className="text-lg sm:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-              Grid & Logic designs and builds 3D websites, product configurators, and ecommerce stores for businesses that want to look sharp and grow steadily.
+          <Reveal delay={0.2}>
+            <p className="text-lg sm:text-xl text-white/70 max-w-3xl mb-8 leading-relaxed">
+              Engineered digital products for ambitious brands. 3D configurators, AR previews, and AI — built for furniture, ecommerce, and beyond, on web and mobile.
             </p>
           </Reveal>
 
           <Reveal delay={0.3} className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg"
-              onClick={() => { if (typeof window !== "undefined") window.location.href = "mailto:info@gridandlogic.com?subject=Project%20enquiry"; }}
+              onClick={() => { if (typeof window !== "undefined") window.location.href = "#contact"; }}
             >
-              Start a Project
+              Book a free discovery call
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => { if (typeof window !== "undefined") window.location.href = "#services"; }}
+              onClick={() => { if (typeof window !== "undefined") window.location.href = "#work"; }}
             >
-              Explore Services
+              View work
             </Button>
+          </Reveal>
+
+          <Reveal delay={0.4} className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white">+32%</div>
+              <div className="text-sm text-white/60 mt-1">Conversion rate</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white">+27%</div>
+              <div className="text-sm text-white/60 mt-1">Average order value</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white">-28%</div>
+              <div className="text-sm text-white/60 mt-1">Product returns</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white">+45%</div>
+              <div className="text-sm text-white/60 mt-1">Engagement</div>
+            </div>
           </Reveal>
         </div>
       </Container>

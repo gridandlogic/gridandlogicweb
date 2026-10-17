@@ -17,13 +17,13 @@ export function Contact() {
         <Reveal>
           <Eyebrow index="06">Contact</Eyebrow>
           <h2 className="mt-5 max-w-lg text-h2 text-gradient-ink">
-            Have a Project in Mind? Let's Build Something Great Together.
+            Let's build something intelligent together
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-md text-lead text-ink-dim">
-            Tell us what you need. We will reply with a clear plan, timeline and price.
+            Grid & Logic designs and builds intelligent digital products for growth-stage brands. We partner with founders and teams to turn ambitious ideas into polished, production-ready products.
           </p>
         </Reveal>
 
@@ -37,7 +37,7 @@ export function Contact() {
 
             <div className="relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
               <div>
-                <h3 className="text-h3 text-ink mb-4">Tell us about your project</h3>
+                <h3 className="text-h3 text-ink mb-4">Get in touch</h3>
                 <p className="text-sm text-ink-dim mb-6">
                   Fill in the form and we will get back to you. You can also reach us directly.
                 </p>

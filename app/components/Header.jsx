@@ -105,7 +105,7 @@ export function Header() {
 
           <div className="hidden lg:block">
             <Button href="#contact" size="sm" variant="outline">
-              Want a Project?
+              Book a call
             </Button>
           </div>
 
@@ -169,7 +169,7 @@ export function Header() {
                 className="mt-6 w-full"
                 onClick={() => setMenuOpen(false)}
               >
-                Want a Project?
+                Book a call
               </Button>
             </nav>
           </Container>

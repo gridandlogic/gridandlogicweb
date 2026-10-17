@@ -13,7 +13,7 @@ export function Testimonial() {
         <Reveal>
           <Eyebrow index="05">What clients say</Eyebrow>
           <h2 className="mt-5 max-w-md text-h2 text-gradient-ink">
-            Real feedback from the people we have worked with
+            Trusted by ambitious brands
           </h2>
         </Reveal>
 
