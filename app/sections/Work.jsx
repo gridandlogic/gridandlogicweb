@@ -69,9 +69,9 @@ export function Work() {
       <Container>
         <SectionHeading
           index="02"
-          eyebrow="Selected work"
-          title="Things we have shipped"
-          lead="A configurator, an agency site, and two storefronts — all live, all linked. Open any of them."
+          eyebrow="Projects from our team"
+          title="A selection of recent work"
+          lead="Filter by service to see what fits your project."
         />
 
         <div className="grid gap-6">
@@ -79,8 +79,6 @@ export function Work() {
             <ProjectCard project={featured} priority />
           </Reveal>
 
-          {/* Tablets get a 2-up like every other section; three across only
-              once there is real width for the card copy. */}
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((project, index) => (
               <li key={project.href}>

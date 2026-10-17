@@ -18,7 +18,7 @@ export function Process() {
         <SectionHeading
           index="03"
           eyebrow="How we work"
-          title="Four steps, no surprises"
+          title="Four clear steps, from first call to ongoing support"
           lead="You always know what is happening, what it costs, and when it lands. No black boxes and no open-ended timelines."
         />
 

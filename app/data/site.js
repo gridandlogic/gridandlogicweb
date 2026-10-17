@@ -9,8 +9,8 @@ export const site = {
   name: "Grid & Logic",
   shortDescription:
     "A digital product studio building 3D websites, product configurators, and ecommerce stores for growing brands.",
-  email: "gridandlogic@gmail.com",
-  emailHref: `mailto:gridandlogic@gmail.com?subject=${CALL_SUBJECT}`,
+  email: "info@gridandlogic.com",
+  emailHref: `mailto:info@gridandlogic.com?subject=${CALL_SUBJECT}`,
   phone: "0337 499 2211",
   phoneHref: "tel:+923374992211",
   whatsapp: "0337 499 2211",

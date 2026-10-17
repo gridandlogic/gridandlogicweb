@@ -2,7 +2,6 @@ import { Container } from "@/app/components/ui/Container";
 import { Button } from "@/app/components/ui/Button";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { Reveal } from "@/app/components/ui/Reveal";
-import { GlobeVisual } from "@/app/components/visual/GlobeVisual";
 import { site } from "@/app/data/site";
 
 const principles = [
@@ -24,67 +23,55 @@ export function Studio() {
   return (
     <section id="studio" className="scroll-mt-24 border-t border-line py-24 lg:py-32">
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
-          <div>
-            <Reveal>
-              <Eyebrow index="04">The studio</Eyebrow>
-              <h2 className="mt-5 max-w-md text-h2 text-gradient-ink">
-                A small studio, built to ship
-              </h2>
-            </Reveal>
+        <Reveal>
+          <Eyebrow index="04">The studio</Eyebrow>
+          <h2 className="mt-5 max-w-md text-h2 text-gradient-ink">
+            A small team that treats your project like its own
+          </h2>
+        </Reveal>
 
-            <Reveal delay={0.08}>
-              <p className="mt-6 max-w-lg text-lead text-ink-dim">
-                We are a compact team of designers and engineers working remotely with
-                brands around the world. Small enough to move quickly, experienced
-                enough to get it right the first time.
-              </p>
-            </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mt-6 max-w-3xl text-lead text-ink-dim">
+            Grid & Logic is a digital product studio. We build and run the websites, configurators, and ecommerce stores that businesses rely on every day, and we keep the process clear so you always know what is happening.
+          </p>
+        </Reveal>
 
-            <Reveal delay={0.14}>
-              <dl className="mt-10 flex flex-col divide-y divide-line border-y border-line">
-                {principles.map((principle) => (
-                  <div key={principle.title} className="py-5">
-                    <dt className="text-[0.95rem] font-medium text-ink">
-                      {principle.title}
-                    </dt>
-                    <dd className="mt-1.5 text-sm leading-relaxed text-ink-dim">
-                      {principle.body}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <Button href={site.emailHref} variant="outline" className="mt-9">
-                Start a conversation
-              </Button>
-            </Reveal>
-          </div>
-
-          {/* Global reach, shown rather than claimed. */}
-          <Reveal delay={0.1} className="relative">
-            <div className="overflow-hidden rounded-panel border border-line bg-surface">
-              <div className="flex items-center justify-between border-b border-line px-5 py-4">
-                <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-ink-faint">
-                  Remote-first
-                </span>
-                <span className="flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-accent">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                  Working worldwide
-                </span>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: "Our mission", body: "Give businesses well-made digital tools that are simple to use and built to last." },
+            { title: "Our vision", body: "To be the first agency a growing business thinks of when it needs to get online and grow." },
+            { title: "Projects Delivered", body: "Websites, configurators, and stores completed for our clients." },
+            { title: "Projects in Progress", body: "Current work we are building and shipping for clients." },
+          ].map((item, index) => (
+            <Reveal key={item.title} delay={0.1 + index * 0.05}>
+              <div className="p-6 border border-line bg-surface rounded-panel">
+                <h3 className="text-h3 text-ink mb-3">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-ink-dim">{item.body}</p>
               </div>
-              <div className="relative">
-                <GlobeVisual className="h-[300px] w-full sm:h-[380px] lg:h-[440px]" />
-                <div
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface to-transparent"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal delay={0.3} className="mt-16">
+          <dl className="flex flex-col divide-y divide-line border-y border-line max-w-2xl">
+            {principles.map((principle) => (
+              <div key={principle.title} className="py-5">
+                <dt className="text-[0.95rem] font-medium text-ink">
+                  {principle.title}
+                </dt>
+                <dd className="mt-1.5 text-sm leading-relaxed text-ink-dim">
+                  {principle.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <Reveal delay={0.35}>
+          <Button href={site.emailHref} variant="outline" className="mt-9">
+            Start a conversation
+          </Button>
+        </Reveal>
       </Container>
     </section>
   );

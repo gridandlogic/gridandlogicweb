@@ -104,8 +104,8 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button href={site.emailHref} size="sm" variant="outline">
-              Book a call
+            <Button href="#contact" size="sm" variant="outline">
+              Want a Project?
             </Button>
           </div>
 
@@ -165,11 +165,11 @@ export function Header() {
                 </a>
               ))}
               <Button
-                href={site.emailHref}
+                href="#contact"
                 className="mt-6 w-full"
                 onClick={() => setMenuOpen(false)}
               >
-                Book a call
+                Want a Project?
               </Button>
             </nav>
           </Container>

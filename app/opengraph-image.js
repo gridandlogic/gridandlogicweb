@@ -76,7 +76,7 @@ export default function OpengraphImage() {
             color: "#5f6b7d",
           }}
         >
-          <span>gridandlogic@gmail.com</span>
+          <span>info@gridandlogic.com</span>
           <span>Remote-first · Worldwide</span>
         </div>
       </div>

@@ -15,6 +15,19 @@ export function Contact() {
     <section id="contact" className="scroll-mt-24 border-t border-line py-24 lg:py-32">
       <Container>
         <Reveal>
+          <Eyebrow index="06">Contact</Eyebrow>
+          <h2 className="mt-5 max-w-lg text-h2 text-gradient-ink">
+            Have a Project in Mind? Let's Build Something Great Together.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-6 max-w-md text-lead text-ink-dim">
+            Tell us what you need. We will reply with a clear plan, timeline and price.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.15} className="mt-8">
           <div className="relative overflow-hidden rounded-panel border border-line bg-surface px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
             <div
               className="pointer-events-none absolute inset-0 bg-gridlines opacity-70"
@@ -24,17 +37,12 @@ export function Contact() {
 
             <div className="relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
               <div>
-                <Eyebrow index="06">Contact</Eyebrow>
-                <h2 className="mt-5 max-w-lg text-h2 text-gradient-ink">
-                  Tell us what you are building
-                </h2>
-                <p className="mt-6 max-w-md text-lead text-ink-dim">
-                  Send the form or reach out directly. We will map the project, point
-                  out the fastest path to something live, and send you a written plan —
-                  whether or not you work with us.
+                <h3 className="text-h3 text-ink mb-4">Tell us about your project</h3>
+                <p className="text-sm text-ink-dim mb-6">
+                  Fill in the form and we will get back to you. You can also reach us directly.
                 </p>
 
-                <dl className="mt-10 flex flex-col divide-y divide-line border-y border-line">
+                <dl className="flex flex-col divide-y divide-line border-y border-line">
                   {channels.map((channel) => (
                     <div
                       key={channel.label}

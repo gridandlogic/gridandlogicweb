@@ -1,9 +1,31 @@
 import Image from "next/image";
 import { Container } from "@/app/components/ui/Container";
 import { Card } from "@/app/components/ui/Card";
+import { Button } from "@/app/components/ui/Button";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionHeading } from "@/app/components/ui/SectionHeading";
-import { services } from "@/app/data/site";
+import { site } from "@/app/data/site";
+
+const services = [
+  {
+    title: "3D Configurators",
+    description: "Real-time product configurators that let customers customize, preview, and buy faster.",
+    image: "/images/sofa-configrator.png",
+    imageAlt: "Sofa configurator interface",
+  },
+  {
+    title: "Web & Ecommerce",
+    description: "Websites and online stores built to convert visitors into customers.",
+    image: "/images/ecomerce%20website.png",
+    imageAlt: "Ecommerce storefront",
+  },
+  {
+    title: "Brand & Content",
+    description: "Content, posts, and visuals that grow your audience and make your brand memorable.",
+    image: "/images/image-36.png",
+    imageAlt: "Brand design samples",
+  },
+];
 
 export function Services() {
   return (
@@ -12,13 +34,13 @@ export function Services() {
         <SectionHeading
           index="01"
           eyebrow="Services"
-          title="Three ways we help brands sell"
-          lead="Every engagement is scoped around one business result — more qualified leads, more completed checkouts, or a brand people remember."
+          title="Everything you need to get online and grow"
+          lead="Three services, one team. Choose one, or let us handle the whole thing."
         />
 
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <li key={service.id}>
+            <li key={service.title}>
               <Reveal delay={index * 0.08} className="h-full">
                 <Card interactive className="flex h-full flex-col overflow-hidden">
                   <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
@@ -29,31 +51,22 @@ export function Services() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
                       className="object-cover opacity-90"
                     />
-                    <span className="absolute left-4 top-4 rounded-full bg-canvas/80 px-2.5 py-1 font-mono text-[0.68rem] text-accent backdrop-blur-sm">
-                      {service.index}
-                    </span>
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="text-h3 text-ink">{service.title}</h3>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-dim">
-                      {service.summary}
+                      {service.description}
                     </p>
 
-                    <ul className="mt-6 flex flex-col gap-2.5 border-t border-line pt-5">
-                      {service.points.map((point) => (
-                        <li
-                          key={point}
-                          className="flex items-center gap-2.5 text-[0.82rem] text-ink-faint"
-                        >
-                          <span
-                            className="h-1 w-1 shrink-0 rounded-full bg-accent"
-                            aria-hidden="true"
-                          />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
+                    <Button 
+                      href={site.emailHref} 
+                      variant="outline" 
+                      size="sm" 
+                      className="mt-6 w-full"
+                    >
+                      Start a Project
+                    </Button>
                   </div>
                 </Card>
               </Reveal>
