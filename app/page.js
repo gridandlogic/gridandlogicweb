@@ -1,25 +1,10 @@
-import { Hero } from "@/app/sections/Hero";
-import { CapabilityStrip } from "@/app/sections/CapabilityStrip";
-import { Services } from "@/app/sections/Services";
-import { Work } from "@/app/sections/Work";
-import { Process } from "@/app/sections/Process";
-import { Studio } from "@/app/sections/Studio";
-import { Testimonial } from "@/app/sections/Testimonial";
-import { Journal } from "@/app/sections/Journal";
-import { Contact } from "@/app/sections/Contact";
-
-export default function HomePage() {
-  return (
-    <main id="main">
-      <Hero />
-      <CapabilityStrip />
-      <Services />
-      <Work />
-      <Process />
-      <Studio />
-      <Testimonial />
-      <Journal />
-      <Contact />
-    </main>
-  );
-}
+import AgencyHome from "@/app/components/AgencyHome";
+export const metadata = {
+  title: {
+    absolute: "Grid & Logic | Web Development, 3D & Digital Marketing Agency",
+  },
+  description:
+    "Grid & Logic builds websites, ecommerce stores, 3D product configurators and brands. Explore real work, live website samples, and digital marketing services.",
+  alternates: { canonical: "/" },
+};
+export default AgencyHome;

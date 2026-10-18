@@ -1,0 +1,31 @@
+// Exercise the real handler with mocked transports. No email is sent.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const source=fs.readFileSync('app/api/send/route.js','utf8').replace(/^import .*;$/gm,'').replaceAll('export const ','const ').replace('export async function POST','async function POST');
+let sent,fail=false;
+const nodemailer={createTransport(){return{async sendMail(message){sent=message;if(fail)throw Error('offline');return{accepted:['info@gridandlogic.com']};},close(){}};}};
+class Resend{constructor(){this.emails={send:async message=>{sent=message;return{data:{id:'test-id'}};}};}}
+const servicePages=[{name:'Web development'}];
+const create=env=>new Function('nodemailer','Resend','servicePages','process','Response','Buffer','console',source+'; return POST;')(nodemailer,Resend,servicePages,{env},Response,Buffer,{error(){}});
+const brief={name:'Alex Taylor',email:'alex@example.com',service:'Web development',message:'A business website with <script>alert(1)</script>.'};
+const request=(data,origin='http://localhost:4180')=>new Request('http://localhost:4180/api/send',{method:'POST',headers:{'Content-Type':'application/json',origin,'x-forwarded-for':'127.0.0.1'},body:typeof data==='string'?data:JSON.stringify(data)});
+const empty=create({});
+assert.equal((await empty(request({}))).status,400);
+assert.equal((await empty(request('invalid'))).status,400);
+assert.equal((await empty(request({...brief,email:'bad'}))).status,400);
+assert.equal((await empty(request({...brief,service:'Other'}))).status,400);
+assert.equal((await empty(request({...brief,website:'spam'}))).status,400);
+assert.equal((await empty(request(brief,'https://unrelated.example'))).status,403);
+assert.equal((await empty(request('x'.repeat(25000)))).status,413);
+assert.equal((await empty(request(brief))).status,503);
+const smtp=create({SMTP_USER:'info@gridandlogic.com',SMTP_PASSWORD:'mock-only'});
+assert.equal((await smtp(request(brief))).status,200);
+assert.equal(sent.to,'info@gridandlogic.com');assert.equal(sent.replyTo,brief.email);
+assert.ok(sent.html.includes('&lt;script&gt;'));assert.ok(!sent.html.includes('<script>'));
+assert.ok(sent.text.includes('Service: Web development'));
+fail=true;assert.equal((await smtp(request(brief))).status,502);fail=false;
+for(let i=0;i<3;i++)assert.equal((await smtp(request(brief))).status,200);
+assert.equal((await smtp(request(brief))).status,429);
+const resend=create({RESEND_API_KEY:'mock-only',RESEND_FROM_EMAIL:'Grid & Logic <info@gridandlogic.com>'});
+assert.equal((await resend(request(brief))).status,200);
+console.log('PASS: handler validation, origin, size, spam field, unconfigured mail, SMTP success/failure, escaped email HTML, Reply-To, rate limiting, and optional Resend. No real email sent.');

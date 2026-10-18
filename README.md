@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Grid & Logic
 
-## Getting Started
+Next.js 16 agency website with an Elite-inspired opening, Xallama-inspired navigation and footer, interactive Three.js artwork, image galleries, real project work, and separate live samples.
 
-First, run the development server:
+## Run
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Email and domain
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+See [HOSTINGER-SETUP.md](HOSTINGER-SETUP.md) for Hostinger SMTP, domain DNS, environment variables, and search launch instructions. Copy `.env.example` to `.env.local` for local development; add real credentials only in the hosting dashboard or your ignored local file. The endpoint is `/api/send`. No API key is needed for Hostinger SMTP.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing
 
-## Learn More
+- `app/components/AgencyHero.jsx`: opening slideshow and floating UI illustrations.
+- `app/components/BrandScene.jsx`: interactive Three.js brand mark, on the 3D slide.
+- `app/components/AgencyWork.jsx`: portfolio, image-only configurator gallery, and three linked samples.
+- `app/data/agency.js`: service content and FAQ copy.
+- `app/agency-motion.css`, `app/reference-blend.css`: layout, reference direction, animation, and responsive styles.
+- `app/api/send/route.js`: Hostinger SMTP with optional Resend fallback.
 
-To learn more about Next.js, take a look at the following resources:
+No links are published for the sofa or container configurators. Pixel Nest and Zaka link to their supplied websites. The sprint board and catalogue are described as deliverables; no separate URLs were supplied for them.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`npm run build` is the production validation. The visual preview export helper can copy prerendered pages to a static preview; SMTP needs the full Next.js deployment. The site includes metadata, six dedicated service pages, JSON-LD, a sitemap, robots.txt, llms.txt, rounded favicon, and mobile icons. Rankings and AI recommendations cannot be guaranteed.

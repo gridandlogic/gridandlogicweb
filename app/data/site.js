@@ -77,39 +77,10 @@ export const services = [
 ];
 
 export const projects = [
-  {
-    title: "Sofa Configurator",
-    category: "Product configurator",
-    result: "Real-time material and colour switching in the browser",
-    image: "/images/sofa-configrator.png",
-    href: "https://abdulahad2468.github.io/sofa-configrator/",
-    year: "2026",
-    featured: true,
-  },
-  {
-    title: "Pixel Nest Agency",
-    category: "Agency website",
-    result: "Full brand site with motion-led storytelling",
-    image: "/images/pixelnest.png",
-    href: "https://pixelnestagy.vercel.app",
-    year: "2026",
-  },
-  {
-    title: "Clothing Store",
-    category: "Ecommerce",
-    result: "Catalogue, cart, and checkout for an apparel brand",
-    image: "/images/clothing%20store.png",
-    href: "https://clothing-lovat.vercel.app/",
-    year: "2026",
-  },
-  {
-    title: "Multi-brand Storefront",
-    category: "Ecommerce",
-    result: "Product discovery and checkout built to scale",
-    image: "/images/ecomerce%20website.png",
-    href: "https://e-commerce-chi-eight-35.vercel.app/",
-    year: "2026",
-  },
+ {title:"Pixel Nest",category:"Website & sprint board",image:"/assets/pixelnest-current.webp",href:"https://pixelnestagy.vercel.app/"},
+ {title:"Zaka Engineering",category:"Website update & catalogue",image:"/assets/zaka.webp",href:"https://zakaengineeringcontainers.vercel.app/"},
+ {title:"Container Studio",category:"3D configurator",image:"/assets/container-exterior.webp"},
+ {title:"Sofa Configurator",category:"3D configurator",image:"/assets/sofa.webp"}
 ];
 
 export const processSteps = [

@@ -1,82 +1,65 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/app/components/Header";
-import { Footer } from "@/app/sections/Footer";
-import { site } from "@/app/data/site";
+import "./agency-motion.css";
+import "./reference-blend.css";
+import { AgencyHeader, AgencyFooter } from "@/app/components/AgencyChrome";
+import { MotionController } from "@/app/components/MotionController";
 import { siteUrl } from "@/app/lib/site-url";
-
-const geistSans = Geist({
+const geist = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const title = `${site.name} — 3D websites, configurators & ecommerce`;
-
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: title,
-    template: `%s — ${site.name}`,
+    default: "Grid & Logic | Web Development, 3D & Digital Marketing Agency",
+    template: "%s | Grid & Logic",
   },
-  description: site.shortDescription,
-  keywords: [
-    "3D websites",
-    "product configurator",
-    "WebGL",
-    "ecommerce development",
-    "Next.js studio",
-    "Grid & Logic",
-  ],
-  alternates: { canonical: "/" },
+  description:
+    "Independent digital agency for web development, ecommerce, 3D configurators, branding, and digital marketing creative.",
+  robots: { index: true, follow: true, "max-image-preview": "large" },
   openGraph: {
     type: "website",
-    url: "/",
-    siteName: site.name,
-    title,
-    description: site.shortDescription,
+    siteName: "Grid & Logic",
+    title: "Grid & Logic — Ideas meet execution",
+    description: "Websites, brands, and 3D experiences built with purpose.",
+    images: [
+      {
+        url: "/assets/social-card.png",
+        width: 1200,
+        height: 630,
+        alt: "Grid & Logic — Good design. Smart logic. Real impact.",
+      },
+    ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: site.shortDescription,
-  },
+  twitter: { card: "summary_large_image", images: ["/assets/social-card.png"] },
   icons: {
-    icon: [{ url: site.logo, type: "image/svg+xml" }],
-    shortcut: [{ url: site.logo, type: "image/svg+xml" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/site.webmanifest",
 };
-
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#05070b",
+  themeColor: "#080a0b",
   colorScheme: "dark",
 };
-
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="min-h-dvh antialiased">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-canvas"
-        >
+    <html lang="en" className={geist.variable}>
+      <body>
+        <a className="skip" href="#main">
           Skip to content
         </a>
-        <Header />
+        <AgencyHeader />
         {children}
-        <Footer />
+        <AgencyFooter />
+        <MotionController />
       </body>
     </html>
   );

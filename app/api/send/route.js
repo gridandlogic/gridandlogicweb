@@ -1,107 +1,147 @@
+import nodemailer from "nodemailer";
 import { Resend } from "resend";
-import { site } from "@/app/data/site";
-
-// Instantiated lazily so a missing key is a request-time error rather than a
-// build-time crash (the reason for the upstream `a0392f8` fix).
-let resend;
-
-function getResend() {
-  if (!resend) {
-    resend = new Resend(process.env.RESEND_API_KEY);
-  }
-  return resend;
+import { servicePages } from "@/app/data/agency";
+export const runtime = "nodejs";
+export const maxDuration = 30;
+const attempts = new Map();
+const services = new Set([
+  ...servicePages.map((s) => s.name),
+  "A little bit of everything",
+]);
+function response(error, status) {
+  return Response.json(
+    { error },
+    { status, headers: { "Cache-Control": "no-store" } },
+  );
 }
-
-const LIMITS = { name: 100, email: 200, message: 5000 };
-
-/**
- * Submitted values land inside an HTML email, so they have to be escaped.
- * Without this, anything a visitor types is live markup in the inbox.
- */
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+function escape(value) {
+  return value.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
 }
-
-function validate(body) {
-  const name = typeof body?.name === "string" ? body.name.trim() : "";
-  const email = typeof body?.email === "string" ? body.email.trim() : "";
-  const message = typeof body?.message === "string" ? body.message.trim() : "";
-
-  if (!name || !email || !message) return { error: "Please fill in every field." };
-  if (name.length > LIMITS.name) return { error: "That name is too long." };
-  if (email.length > LIMITS.email) return { error: "That email address is too long." };
-  if (message.length > LIMITS.message) return { error: "That message is too long." };
-  // Deliberately loose: enough to catch typos without rejecting valid addresses.
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { error: "Please enter a valid email address." };
-  }
-
-  return { data: { name, email, message } };
-}
-
 export async function POST(request) {
+  const origin = request.headers.get("origin");
+  const allowed = new Set([
+    new URL(request.url).origin,
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.gridandlogic.com",
+  ]);
+  if (origin && !allowed.has(origin))
+    return response("This request could not be accepted.", 403);
   let body;
   try {
-    body = await request.json();
+    const text = await request.text();
+    if (Buffer.byteLength(text, "utf8") > 24000)
+      return response("Your message is too long.", 413);
+    body = JSON.parse(text);
   } catch {
-    return Response.json({ error: "Invalid request." }, { status: 400 });
+    return response("Please send a valid project brief.", 400);
   }
-
-  const { data: fields, error: invalid } = validate(body);
-  if (invalid) return Response.json({ error: invalid }, { status: 400 });
-
-  if (!process.env.RESEND_API_KEY) {
-    console.error("[contact] RESEND_API_KEY is not set");
-    return Response.json(
-      { error: "The form is not configured yet. Please email us instead." },
-      { status: 503 }
-    );
-  }
-
-  const { name, email, message } = fields;
-  const safe = {
-    name: escapeHtml(name),
-    email: escapeHtml(email),
-    message: escapeHtml(message).replace(/\n/g, "<br />"),
-  };
-
-  try {
-    const { data, error } = await getResend().emails.send({
-      from: process.env.RESEND_FROM_EMAIL || `${site.name} <onboarding@resend.dev>`,
-      to: process.env.RESEND_TO_EMAIL || site.email,
-      subject: `New enquiry from ${name}`,
-      replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-      html: `
-        <div style="font-family:system-ui,sans-serif;line-height:1.6">
-          <p><strong>Name:</strong> ${safe.name}</p>
-          <p><strong>Email:</strong> ${safe.email}</p>
-          <p><strong>Message:</strong></p>
-          <p>${safe.message}</p>
-        </div>
-      `,
-    });
-
-    if (error) {
-      // Resend's error can carry provider detail; log it, don't return it.
-      console.error("[contact] resend error", error);
-      return Response.json(
-        { error: "We could not send that. Please email us directly." },
-        { status: 502 }
+  if (typeof body?.website === "string" && body.website.trim())
+    return response("This request could not be accepted.", 400);
+  const fields = {};
+  for (const [key, limit] of Object.entries({
+    name: 100,
+    email: 200,
+    service: 100,
+    message: 5000,
+  })) {
+    const value = typeof body?.[key] === "string" ? body[key].trim() : "";
+    if (!value || value.length > limit)
+      return response(
+        "Please complete every field within the displayed limits.",
+        400,
       );
+    fields[key] = value;
+  }
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email) ||
+    /[\r\n]/.test(fields.name) ||
+    !services.has(fields.service)
+  )
+    return response("Please check your email and selected service.", 400);
+  const smtpReady = Boolean(process.env.SMTP_USER && process.env.SMTP_PASSWORD);
+  const resendReady = Boolean(
+    process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL,
+  );
+  if (!smtpReady && !resendReady)
+    return response(
+      "Email is temporarily unavailable. Please use WhatsApp or email info@gridandlogic.com directly.",
+      503,
+    );
+  const now = Date.now();
+  for (const [key, value] of attempts) {
+    if (now - value.start > 600000) attempts.delete(key);
+  }
+  const ip = (request.headers.get("x-forwarded-for") || "unknown")
+    .split(",")[0]
+    .trim();
+  const count = attempts.get(ip) || { start: now, count: 0 };
+  if (count.count >= 5)
+    return response(
+      "Please wait a few minutes before sending another enquiry.",
+      429,
+    );
+  if (attempts.size < 2000 || attempts.has(ip)) {
+    attempts.set(ip, { ...count, count: count.count + 1 });
+  }
+  const from =
+    process.env.CONTACT_FROM_EMAIL ||
+    (smtpReady
+      ? `Grid & Logic <${process.env.SMTP_USER}>`
+      : process.env.RESEND_FROM_EMAIL);
+  const to =
+    process.env.CONTACT_TO_EMAIL ||
+    process.env.RESEND_TO_EMAIL ||
+    "info@gridandlogic.com";
+  const safe = Object.fromEntries(
+    Object.entries(fields).map(([k, v]) => [k, escape(v)]),
+  );
+  const email = {
+    from,
+    to,
+    replyTo: fields.email,
+    subject: `Project enquiry: ${fields.service} — ${fields.name}`,
+    text: `Name: ${fields.name}\nEmail: ${fields.email}\nService: ${fields.service}\n\n${fields.message}`,
+    html: `<div style="font-family:Arial,sans-serif;line-height:1.7"><h2>New Grid &amp; Logic enquiry</h2><p><b>Name:</b> ${safe.name}<br><b>Email:</b> ${safe.email}<br><b>Service:</b> ${safe.service}</p><p>${safe.message.replace(/\n/g, "<br>")}</p></div>`,
+  };
+  try {
+    if (smtpReady) {
+      const port = Number(process.env.SMTP_PORT || 465);
+      const transport = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.hostinger.com",
+        port,
+        secure: port === 465,
+        requireTLS: port !== 465,
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000,
+      });
+      try {
+        const sent = await transport.sendMail(email);
+        if (!sent.accepted?.length) throw Error("delivery_failed");
+      } finally {
+        transport.close();
+      }
+    } else {
+      const result = await new Resend(process.env.RESEND_API_KEY).emails.send(
+        email,
+      );
+      if (result.error || !result.data?.id) throw Error("delivery_failed");
     }
-
-    return Response.json({ id: data?.id ?? null }, { status: 200 });
-  } catch (err) {
-    console.error("[contact] unexpected error", err);
     return Response.json(
-      { error: "We could not send that. Please email us directly." },
-      { status: 500 }
+      { sent: true },
+      { headers: { "Cache-Control": "no-store" } },
+    );
+  } catch {
+    console.error("[contact] email delivery failed");
+    return response(
+      "We could not send your enquiry. Please use WhatsApp or email info@gridandlogic.com directly.",
+      502,
     );
   }
 }
