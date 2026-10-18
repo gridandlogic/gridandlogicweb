@@ -13,7 +13,7 @@ Production origin: **https://www.gridandlogic.com**. Canonical source: `gridandl
 - Optional Google/Bing HTML verification tokens read from environment variables; blank values produce no verification tag.
 - Public IndexNow ownership file and a deployment-time submission script. This public key is not a mailbox/API secret.
 
-FAQ markup does not imply a Google FAQ rich result: that feature is generally limited to authoritative government and health sites. `llms.txt` is optional; Google does not require an AI file or special AI schema. None of these changes guarantees ranking, indexing, or AI citation.
+FAQ markup describes the visible questions and answers; Google's FAQ rich result feature was retired in May 2026. `llms.txt` is optional; Google does not require an AI file or special AI schema. None of these changes guarantees ranking, indexing, or AI citation.
 
 ## Google Search Console — use the client's Google account
 
@@ -72,6 +72,6 @@ Current verification: production build and the 13-page rendered-content audit pa
 - https://support.google.com/webmasters/answer/9008080
 - https://support.google.com/webmasters/answer/7451001
 - https://developers.google.com/search/docs/appearance/ai-features
-- https://developers.google.com/search/docs/appearance/structured-data/faqpage
+- https://developers.google.com/search/updates
 - https://www.bing.com/webmasters/help/add-and-verify-site-12184f8b
 - https://www.indexnow.org/documentation
