@@ -12,6 +12,12 @@ const geist = Geist({
 });
 export const metadata = {
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
   title: {
     default: "Grid & Logic | Web Development, 3D & Digital Marketing Agency",
     template: "%s | Grid & Logic",

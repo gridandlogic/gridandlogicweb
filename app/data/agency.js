@@ -125,6 +125,6 @@ export const faqs = [
   ],
   [
     "How do we start a project?",
-    "Send us a short project brief through WhatsApp or email gridandlogic@gmail.com. Tell us about your business, what you want to build, and any timeline you have in mind. We will discuss the next steps with you.",
+    "Send us a short project brief through WhatsApp or email info@gridandlogic.com. Tell us about your business, what you want to build, and any timeline you have in mind. We will discuss the next steps with you.",
   ],
 ];

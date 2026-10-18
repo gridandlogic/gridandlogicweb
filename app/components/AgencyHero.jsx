@@ -133,6 +133,8 @@ export default function AgencyHero() {
                       <div className="mock-photo">
                         <img
                           src="/assets/clothing-sample.webp"
+                          fetchPriority="high"
+                          decoding="async"
                           width="1440"
                           height="1000"
                           alt="Fashion storefront website by Grid and Logic"

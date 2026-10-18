@@ -966,3 +966,13 @@
     transform: scaleX(1);
   }
 }
+.case-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}

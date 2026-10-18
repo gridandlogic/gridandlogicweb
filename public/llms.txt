@@ -12,6 +12,10 @@
 ## Pages
 - [Home and agency overview](https://www.gridandlogic.com/)
 - [All services](https://www.gridandlogic.com/services/)
+- [About the agency](https://www.gridandlogic.com/about/)
+- [Selected projects](https://www.gridandlogic.com/work/)
+- [Pixel Nest project](https://www.gridandlogic.com/work/pixel-nest/)
+- [Zaka Engineering project](https://www.gridandlogic.com/work/zaka-engineering/)
 - [Web development](https://www.gridandlogic.com/services/web-development/)
 - [Ecommerce development](https://www.gridandlogic.com/services/ecommerce/)
 - [3D product configurators](https://www.gridandlogic.com/services/3d-configurators/)
@@ -19,7 +23,7 @@
 - [Brand identity & design](https://www.gridandlogic.com/services/branding/)
 - [SEO & website performance](https://www.gridandlogic.com/services/seo-performance/)
 
-## Verified social profiles
+## Official social profiles
 - Instagram: https://www.instagram.com/gridandlogic/
 - Facebook: https://www.facebook.com/profile.php?id=61592258005096
 - Threads: https://www.threads.com/@gridandlogic

@@ -38,6 +38,8 @@ The private Sites preview is for visual review. Deploy the Next.js GitHub projec
 
 ## Search launch
 
+See [SEARCH-LAUNCH.md](SEARCH-LAUNCH.md) for the client-account verification steps, optional verification environment variables, IndexNow, and ongoing measurement.
+
 1. After the public domain serves the new deployment, verify the domain in Google Search Console and Bing Webmaster Tools.
 2. Submit `https://www.gridandlogic.com/sitemap.xml` and request indexing for the homepage and six service pages.
 3. Keep your agency name, domain, email, and phone consistent across official social profiles. Add the genuine LinkedIn URL when available.

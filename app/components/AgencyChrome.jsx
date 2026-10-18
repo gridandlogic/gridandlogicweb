@@ -91,7 +91,8 @@ export function AgencyFooter() {
             </div>
             <nav aria-label="Footer navigation">
               <a href="/">Home</a>
-              <a href="/#work">Our work</a>
+              <a href="/work/">Our work</a>
+              <a href="/about/">About the studio</a>
               <a href="/#samples">Samples</a>
               <a href="/services/">Services</a>
               <a href="/#contact">Contact</a>

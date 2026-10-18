@@ -1,4 +1,5 @@
 import { servicePages } from "@/app/data/agency";
+import { StructuredData } from "@/app/components/StructuredData";
 export const metadata = {
   title: "Digital Agency Services",
   description:
@@ -8,6 +9,13 @@ export const metadata = {
 export default function Services() {
   return (
     <main id="main">
+      <StructuredData
+        page={{
+          path: "/services/",
+          name: "Digital Agency Services",
+          type: "CollectionPage",
+        }}
+      />
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">

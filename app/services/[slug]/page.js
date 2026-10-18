@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { servicePages } from "@/app/data/agency";
 import { StructuredData } from "@/app/components/StructuredData";
+import { serviceAnswers, projects } from "@/app/data/search-content";
 export function generateStaticParams() {
   return servicePages.map((s) => ({ slug: s.slug }));
 }
@@ -26,7 +27,7 @@ export default async function Service({ params }) {
   if (!s) notFound();
   return (
     <main id="main">
-      <StructuredData service={s} />
+      <StructuredData service={s} answers={serviceAnswers[slug]} />
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">
@@ -36,7 +37,7 @@ export default async function Service({ params }) {
             <span className="dot" />
             {s.name}
           </div>
-          <h1>{s.heading}</h1>
+          <h1>{s.name}</h1>
           <p>{s.description}</p>
           <a
             className="btn primary"
@@ -74,6 +75,42 @@ export default async function Service({ params }) {
           </p>
         </div>
       </section>
+      <section className="section faq">
+        <div className="wrap faq-layout">
+          <div>
+            <div className="eyebrow">Before you start</div>
+            <h2>Your questions, answered.</h2>
+            <p>Practical details to help you plan the right project.</p>
+          </div>
+          <div>
+            {serviceAnswers[slug].map(([q, a]) => (
+              <details key={q}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      {projects.some((p) => p.services.includes(slug)) && (
+        <section className="section wrap">
+          <h2>Related project work</h2>
+          <div className="service-links">
+            {projects
+              .filter((p) => p.services.includes(slug))
+              .map((p) => (
+                <a
+                  className="service-link"
+                  key={p.slug}
+                  href={`/work/${p.slug}/`}
+                >
+                  <h3>{p.name} ↗</h3>
+                  <p>{p.description}</p>
+                </a>
+              ))}
+          </div>
+        </section>
+      )}
       <section className="section faq">
         <div className="wrap">
           <div className="section-head">

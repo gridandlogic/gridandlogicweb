@@ -1,6 +1,12 @@
 import { siteUrl } from "@/app/lib/site-url";
 import { faqs } from "@/app/data/agency";
-export function StructuredData({ faq = false, service = null }) {
+export function StructuredData({
+  faq = false,
+  service = null,
+  answers = null,
+  page = null,
+  project = null,
+}) {
   const org = {
     "@type": "Organization",
     "@id": siteUrl + "/#organization",
@@ -9,6 +15,13 @@ export function StructuredData({ faq = false, service = null }) {
     url: siteUrl + "/",
     logo: siteUrl + "/assets/logo.png",
     email: "info@gridandlogic.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Project enquiries",
+      email: "info@gridandlogic.com",
+      telephone: "+923374992211",
+      availableLanguage: "English",
+    },
     telephone: "+923374992211",
     description:
       "An independent digital agency and product studio building websites, ecommerce stores, 3D configurators, brand identities, and digital marketing creative for businesses worldwide.",
@@ -28,10 +41,10 @@ export function StructuredData({ faq = false, service = null }) {
       publisher: { "@id": org["@id"] },
     },
   ];
-  if (faq)
+  if (faq || answers)
     graph.push({
       "@type": "FAQPage",
-      mainEntity: faqs.map(([q, a]) => ({
+      mainEntity: (answers || faqs).map(([q, a]) => ({
         "@type": "Question",
         name: q,
         acceptedAnswer: {
@@ -67,6 +80,51 @@ export function StructuredData({ faq = false, service = null }) {
       ],
     });
   }
+  if (page) {
+    graph.push({
+      "@type": page.type || "WebPage",
+      "@id": siteUrl + page.path + "#webpage",
+      url: siteUrl + page.path,
+      name: page.name,
+      ...(page.description ? { description: page.description } : {}),
+      isPartOf: { "@id": siteUrl + "/#website" },
+      about: { "@id": org["@id"] },
+      inLanguage: "en",
+    });
+    graph.push({
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl + "/" },
+        ...(page.parent
+          ? [
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: page.parent.name,
+                item: siteUrl + page.parent.path,
+              },
+            ]
+          : []),
+        {
+          "@type": "ListItem",
+          position: page.parent ? 3 : 2,
+          name: page.name,
+          item: siteUrl + page.path,
+        },
+      ],
+    });
+  }
+  if (project)
+    graph.push({
+      "@type": "CreativeWork",
+      "@id": siteUrl + `/work/${project.slug}/#project`,
+      name: `${project.name} — ${project.category}`,
+      description: project.description,
+      url: siteUrl + `/work/${project.slug}/`,
+      image: siteUrl + `/assets/${project.image}`,
+      creator: { "@id": org["@id"] },
+      mainEntityOfPage: { "@id": siteUrl + `/work/${project.slug}/#webpage` },
+    });
   return (
     <script
       type="application/ld+json"

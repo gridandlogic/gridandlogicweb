@@ -70,7 +70,7 @@ export default function AgencyHome() {
               <br />
               An engineering heart.
             </h2>
-            <a className="text-link" href="#contact">
+            <a className="text-link" href="/about/">
               Meet your next creative partner <span aria-hidden="true">↗</span>
             </a>
           </div>

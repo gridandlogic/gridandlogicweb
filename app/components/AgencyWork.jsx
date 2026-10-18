@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const work = [
   {
     title: "Pixel Nest",
+    detail: "/work/pixel-nest/",
     category: "web",
     type: "Agency website & sprint board",
     image: "pixelnest-current.webp",
@@ -13,6 +14,7 @@ const work = [
   },
   {
     title: "Zaka Engineering",
+    detail: "/work/zaka-engineering/",
     category: "web",
     type: "Website update & catalogue",
     image: "zaka.webp",
@@ -201,6 +203,11 @@ export function AgencyWork() {
                   </span>
                 </div>
                 <p className="project-description">{p.description}</p>
+                {p.detail && (
+                  <a className="text-link" href={p.detail}>
+                    Explore the project ↗
+                  </a>
+                )}
               </article>
             ))}
           </div>
