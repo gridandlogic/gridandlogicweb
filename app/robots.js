@@ -1,8 +1,6 @@
-import { siteUrl } from "@/app/lib/site-url";
-
 export default function robots() {
   return {
     rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: "https://www.gridandlogic.com/sitemap.xml",
   };
 }
