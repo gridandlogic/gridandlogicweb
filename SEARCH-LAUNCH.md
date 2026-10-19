@@ -23,8 +23,8 @@ FAQ markup describes the visible questions and answers; Google's FAQ rich result
 4. In Hostinger, open the domain's DNS / Nameservers settings and manage DNS records. If the authoritative nameservers point to another provider, use that provider's DNS editor instead.
 5. Add a new **TXT** record, name **@**, value **the full Google verification string**, default TTL. Preserve all current website, subdomain, mail, SPF, DKIM and DMARC records.
 6. Return to Google and click **Verify**. DNS propagation can delay verification. Keep the TXT record after verification.
-7. Under **Sitemaps**, submit `https://www.gridandlogic.com/sitemap.xml`. Confirm the report reads Success; submission alone is not proof that pages are indexed.
-8. Inspect the homepage, `/about/`, `/services/web-development/`, `/services/digital-marketing/` and the two project pages. Run the live URL test and request indexing for the important new pages. Inspect other service pages as needed.
+7. Under **Sitemaps**, submit `https://www.gridandlogic.com/sitemap.xml`. Confirm the report reads Success and that the sitemap lists `www` URLs; submission alone is not proof that pages are indexed.
+8. Inspect `https://www.gridandlogic.com/` (the canonical homepage), run **Test live URL**, then select **Request indexing**. Repeat for `/services/web-development/` and `/services/3d-configurators/`, then submit the other service and work pages. Inspect `https://gridandlogic.com/` and confirm it permanently redirects to the matching `www` URL.
 9. After Google processes the site, review Page indexing, Core Web Vitals, HTTPS and Performance. Compare submitted URLs with indexed URLs and investigate exclusions before changing content.
 10. Under **Settings → Search generative AI**, confirm **Include my site's links and content in Search generative AI features** (the default, or inherited equivalent). Review the **Generative AI performance** report when sufficient impression data exists. This is an account setting, so it was deferred with the rest of the client's account setup.
 

@@ -13,7 +13,7 @@ export function StructuredData({
     name: "Grid & Logic",
     alternateName: ["Grid and Logic", "Gridandlogic"],
     url: siteUrl + "/",
-    logo: siteUrl + "/assets/logo.png",
+    logo: siteUrl + "/icon-512.png",
     email: "info@gridandlogic.com",
     contactPoint: {
       "@type": "ContactPoint",

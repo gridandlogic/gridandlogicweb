@@ -1,10 +1,10 @@
 import AgencyHome from "@/app/components/AgencyHome";
 export const metadata = {
   title: {
-    absolute: "Grid & Logic | Web Development, 3D & Digital Marketing Agency",
+    absolute: "Website Development Agency & 3D Configurators | Grid & Logic",
   },
   description:
-    "Grid & Logic builds websites, ecommerce stores, 3D product configurators and brands. Explore real work, live website samples, and digital marketing services.",
+    "Grid & Logic is a website development agency building fast websites, ecommerce stores, and interactive 3D product configurators for brands worldwide. Explore our work and services.",
   alternates: { canonical: "/" },
 };
 export default AgencyHome;

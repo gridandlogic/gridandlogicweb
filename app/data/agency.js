@@ -4,7 +4,7 @@ export const servicePages = [
     name: "Web development",
     heading: "Websites with a reason to exist.",
     description:
-      "Fast, responsive websites that make your business clear and turn interest into enquiries.",
+      "Grid & Logic is a website development agency creating fast, responsive business websites that make your offer clear and turn interest into enquiries.",
     tags: "Custom websites · Next.js · Responsive design",
     paragraph:
       "We build marketing websites and digital experiences around your customers. Clear navigation, thoughtful design, accessible interfaces, and fast loading all work together to make the next step easy.",
@@ -38,7 +38,7 @@ export const servicePages = [
     name: "3D product configurators",
     heading: "Let them see it. Then sell it.",
     description:
-      "Interactive product experiences that bring materials, colours, and choices to life in the browser.",
+      "Interactive 3D product configurators that bring materials, colours, and product choices to life in the browser.",
     tags: "Three.js · WebGL · Real-time customisation",
     paragraph:
       "A 3D configurator lets customers explore a product before they commit. We combine real-time visuals with product rules so customers can choose materials and colours and understand what they are buying.",

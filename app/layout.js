@@ -19,17 +19,18 @@ export const metadata = {
       : undefined,
   },
   title: {
-    default: "Grid & Logic | Web Development, 3D & Digital Marketing Agency",
+    default: "Website Development Agency & 3D Configurators | Grid & Logic",
     template: "%s | Grid & Logic",
   },
   description:
-    "Independent digital agency for web development, ecommerce, 3D configurators, branding, and digital marketing creative.",
+    "Grid & Logic is a website development agency building fast business websites, ecommerce stores, and interactive 3D product configurators for brands worldwide.",
   robots: { index: true, follow: true, "max-image-preview": "large" },
   openGraph: {
     type: "website",
     siteName: "Grid & Logic",
-    title: "Grid & Logic — Ideas meet execution",
-    description: "Websites, brands, and 3D experiences built with purpose.",
+    title: "Website Development Agency & 3D Configurators | Grid & Logic",
+    description:
+      "Web development, ecommerce, and interactive 3D product configurators by Grid & Logic, an independent digital agency working worldwide.",
     images: [
       {
         url: "/assets/social-card.png",
@@ -41,10 +42,7 @@ export const metadata = {
   },
   twitter: { card: "summary_large_image", images: ["/assets/social-card.png"] },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-    ],
+    icon: [{ url: "/icon-512.png", type: "image/png", sizes: "512x512" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",

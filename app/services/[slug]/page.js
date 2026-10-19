@@ -11,7 +11,10 @@ export async function generateMetadata({ params }) {
   const s = servicePages.find((s) => s.slug === slug);
   if (!s) return {};
   return {
-    title: s.name + " Agency",
+    title:
+      slug === "web-development"
+        ? "Website Development Agency"
+        : s.name + " Agency",
     description: s.description,
     alternates: { canonical: `/services/${s.slug}/` },
     openGraph: {
