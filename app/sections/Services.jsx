@@ -18,11 +18,6 @@ const services = [
     link: "#contact",
   },
   {
-    title: "AI Integration",
-    description: "Smart recommendations and automated workflows powered by artificial intelligence.",
-    link: "#contact",
-  },
-  {
     title: "Web & Ecommerce",
     description: "High-performance websites and stores built to convert visitors into customers.",
     link: "#contact",

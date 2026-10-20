@@ -1,15 +1,10 @@
-import { Geist } from "next/font/google";
 import "./globals.css";
 import "./agency-motion.css";
 import "./reference-blend.css";
-import { AgencyHeader, AgencyFooter } from "@/app/components/AgencyChrome";
+import { AgencyHeader } from "@/app/components/AgencyNavigation";
+import { AgencyFooter } from "@/app/components/AgencyChrome";
 import { MotionController } from "@/app/components/MotionController";
 import { siteUrl } from "@/app/lib/site-url";
-const geist = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
 export const metadata = {
   metadataBase: new URL(siteUrl),
   verification: {
@@ -55,7 +50,7 @@ export const viewport = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={geist.variable}>
+    <html lang="en">
       <body>
         <a className="skip" href="#main">
           Skip to content

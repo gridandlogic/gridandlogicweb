@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { StructuredData } from "@/app/components/StructuredData";
 import { servicePages, faqs } from "@/app/data/agency";
 export const metadata = {
@@ -25,7 +26,7 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">
-            <a href="/">Home</a> / About
+            <Link href="/">Home</Link> / About
           </div>
           <div className="eyebrow" style={{ marginTop: 35 }}>
             Design meets logic
@@ -46,9 +47,9 @@ export default function About() {
             We work remotely with businesses worldwide. Scope, milestones,
             responsibilities, and handover are agreed before the work begins.
           </p>
-          <a className="text-link" href="/work/">
+          <Link className="text-link" href="/work/">
             Explore our selected projects ↗
-          </a>
+          </Link>
         </div>
         <div>
           <h2>Talk directly with us.</h2>
@@ -66,9 +67,27 @@ export default function About() {
             Send a short brief with your business goals, required services, and
             preferred launch date.
           </p>
-          <a className="btn primary" href="/#contact">
+          <Link className="btn primary" href="/#contact">
             Start a conversation ↗
-          </a>
+          </Link>
+        </div>
+      </section>
+      <section className="section wrap" aria-labelledby="author-bio-title">
+        <div className="content-grid">
+          <div>
+            <div className="eyebrow">Editorial team</div>
+            <h2 id="author-bio-title">About the authors</h2>
+          </div>
+          <div>
+            <p>
+              <strong>Grid &amp; Logic Team</strong> writes about website design
+              and development, ecommerce, and 3D product configurators—the work
+              and services presented on this site.
+            </p>
+            <Link className="text-link" href="/work/">
+              See the projects behind our work ↗
+            </Link>
+          </div>
         </div>
       </section>
       <section className="section wrap">

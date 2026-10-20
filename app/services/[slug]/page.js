@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { servicePages } from "@/app/data/agency";
 import { StructuredData } from "@/app/components/StructuredData";
 import { serviceAnswers, projects } from "@/app/data/search-content";
@@ -34,7 +35,7 @@ export default async function Service({ params }) {
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">
-            <a href="/">Home</a> / <a href="/services/">Services</a> / {s.name}
+            <Link href="/">Home</Link> / <Link href="/services/">Services</Link> / {s.name}
           </div>
           <div className="eyebrow" style={{ marginTop: 35 }}>
             <span className="dot" />

@@ -65,7 +65,7 @@ export function Hero() {
 
           <Reveal delay={0.2}>
             <p className="text-lg sm:text-xl text-white/70 max-w-3xl mb-8 leading-relaxed">
-              Engineered digital products for ambitious brands. 3D configurators, AR previews, and AI — built for furniture, ecommerce, and beyond, on web and mobile.
+              Engineered digital products for ambitious brands. 3D configurators and AR previews for furniture, ecommerce, and beyond, on web and mobile.
             </p>
           </Reveal>
 
@@ -85,24 +85,6 @@ export function Hero() {
             </Button>
           </Reveal>
 
-          <Reveal delay={0.4} className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-white">+32%</div>
-              <div className="text-sm text-white/60 mt-1">Conversion rate</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-white">+27%</div>
-              <div className="text-sm text-white/60 mt-1">Average order value</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-white">-28%</div>
-              <div className="text-sm text-white/60 mt-1">Product returns</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-white">+45%</div>
-              <div className="text-sm text-white/60 mt-1">Engagement</div>
-            </div>
-          </Reveal>
         </div>
       </Container>
     </section>

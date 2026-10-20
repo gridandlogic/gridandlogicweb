@@ -73,14 +73,6 @@ export const serviceAnswers = {
   ],
   "seo-performance": [
     [
-      "What is the difference between SEO, AEO, and GEO?",
-      "SEO helps search engines discover and understand useful website pages. AEO focuses on clear answers to user questions. GEO focuses on content and business information that generative search systems can understand and cite. These approaches share the need for crawlable, accurate, useful content.",
-    ],
-    [
-      "Does structured data guarantee rankings or AI citations?",
-      "No. Structured data describes visible content and relationships. Search engines decide whether to crawl, index, rank, or cite a page. Relevant content, technical quality, reputation, competition, and ongoing improvement all matter.",
-    ],
-    [
       "What is included in a technical SEO review?",
       "A review can cover crawl access, indexable pages, canonical URLs, metadata, heading structure, internal links, sitemap coverage, structured data, and loading performance. Search Console and Bing Webmaster Tools access helps confirm how search engines see the site.",
     ],

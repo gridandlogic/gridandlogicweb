@@ -256,10 +256,10 @@ export default function GridCanvas({ width, height }) {
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
   const animationRef = useRef(null);
+  const mouseRef = useRef(new THREE.Vector2());
 
   const [hoveredNodeId, setHoveredNodeId] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
-  const [mouse, setMouse] = useState(new THREE.Vector2());
   const [labelObjects, setLabelObjects] = useState(new Map());
 
   // Initialize Three.js scene
@@ -482,10 +482,10 @@ export default function GridCanvas({ width, height }) {
 
     function onMouseMove(event) {
       const rect = renderer.domElement.getBoundingClientRect();
-      setMouse(new THREE.Vector2(
+      mouseRef.current.set(
         ((event.clientX - rect.left) / rect.width) * 2 - 1,
         -((event.clientY - rect.top) / rect.height) * 2 + 1
-      ));
+      );
     }
 
     function onClick(event) {
@@ -528,7 +528,7 @@ export default function GridCanvas({ width, height }) {
       });
 
       // Raycast for hover
-      raycaster.setFromCamera(mouse, camera);
+      raycaster.setFromCamera(mouseRef.current, camera);
       const intersects = raycaster.intersectObject(nodesMesh);
 
       let newHoveredIndex = -1;

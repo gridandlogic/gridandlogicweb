@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { StructuredData } from "@/app/components/StructuredData";
+
 export const metadata = {
   title: "Privacy Policy",
   description:
@@ -7,8 +10,19 @@ export const metadata = {
 export default function Privacy() {
   return (
     <main id="main">
+      <StructuredData
+        page={{
+          path: "/privacy/",
+          name: "Privacy Policy",
+          type: "WebPage",
+          parent: { path: "/", name: "Home" },
+        }}
+      />
       <section className="page-hero">
         <div className="wrap">
+          <div className="breadcrumb">
+            <Link href="/">Home</Link> / Privacy
+          </div>
           <div className="eyebrow">The details</div>
           <h1>Your privacy matters.</h1>
           <p>Last updated: 17 October 2026</p>

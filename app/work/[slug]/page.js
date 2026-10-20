@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/app/data/search-content";
 import { servicePages } from "@/app/data/agency";
@@ -40,7 +42,7 @@ export default async function Project({ params }) {
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">
-            <a href="/">Home</a> / <a href="/work/">Work</a> / {p.name}
+            <Link href="/">Home</Link> / <Link href="/work/">Work</Link> / {p.name}
           </div>
           <div className="eyebrow" style={{ marginTop: 35 }}>
             {p.category}
@@ -58,12 +60,14 @@ export default async function Project({ params }) {
         </div>
       </section>
       <section className="section wrap">
-        <img
+        <Image
           className="case-image"
           src={`/assets/${p.image}`}
           width="1440"
           height="1000"
           alt={`${p.name} website — ${p.category}`}
+          sizes="(max-width: 760px) 90vw, 80vw"
+          priority
         />
         <div className="content-grid" style={{ marginTop: 60 }}>
           <div>
@@ -108,9 +112,9 @@ export default async function Project({ params }) {
               </a>
             ))}
         </div>
-        <a className="btn primary" href="/#contact">
+        <Link className="btn primary" href="/#contact">
           Discuss your project ↗
-        </a>
+        </Link>
       </section>
     </main>
   );

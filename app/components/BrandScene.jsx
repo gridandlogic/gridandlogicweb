@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function BrandScene() {
@@ -228,11 +229,12 @@ export default function BrandScene() {
         <div className="slab s2" />
         <div className="slab s3" />
         <div className="slab s4">
-          <img
+          <Image
             src="/assets/logo-original.png"
             alt=""
             width="195"
             height="195"
+            sizes="195px"
           />
         </div>
       </div>

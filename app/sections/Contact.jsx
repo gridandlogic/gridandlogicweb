@@ -17,7 +17,7 @@ export function Contact() {
         <Reveal>
           <Eyebrow index="06">Contact</Eyebrow>
           <h2 className="mt-5 max-w-lg text-h2 text-gradient-ink">
-            Let's build something intelligent together
+            Let&apos;s build something intelligent together
           </h2>
         </Reveal>
 

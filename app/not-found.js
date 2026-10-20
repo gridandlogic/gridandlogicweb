@@ -1,3 +1,10 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "Page not found",
+  robots: { index: false, follow: true },
+};
+
 export default function NotFound() {
   return (
     <main id="main">
@@ -10,9 +17,9 @@ export default function NotFound() {
             back on track.
           </h1>
           <p>This page may have moved. Find your next idea on our homepage.</p>
-          <a className="btn primary" href="/">
+          <Link className="btn primary" href="/">
             Back to the homepage ↗
-          </a>
+          </Link>
         </div>
       </section>
     </main>

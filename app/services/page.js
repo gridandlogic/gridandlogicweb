@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { servicePages } from "@/app/data/agency";
 import { StructuredData } from "@/app/components/StructuredData";
 export const metadata = {
@@ -19,7 +20,7 @@ export default function Services() {
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">
-            <a href="/">Home</a> / Services
+            <Link href="/">Home</Link> / Services
           </div>
           <h1>
             Good ideas deserve

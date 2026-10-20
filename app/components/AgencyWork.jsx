@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 const work = [
   {
@@ -160,12 +161,13 @@ export function AgencyWork() {
                       rel="noopener noreferrer"
                       aria-label={`${p.label}: ${p.title}`}
                     >
-                      <img
+                      <Image
                         src={`/assets/${p.image}`}
                         alt={`${p.title} — ${p.type}`}
                         width="1440"
                         height="1000"
                         loading="lazy"
+                        sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 34vw"
                       />
                       <span className="project-kind">{p.label} ↗</span>
                     </a>
@@ -175,12 +177,13 @@ export function AgencyWork() {
                       onClick={(e) => open(p, e)}
                       aria-label={`View ${p.title} images`}
                     >
-                      <img
+                      <Image
                         src={`/assets/${p.image}`}
                         alt={`${p.title} — ${p.type}`}
                         width="1440"
                         height="1000"
                         loading="lazy"
+                        sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 34vw"
                       />
                       <span className="project-kind">
                         EXPLORE IMAGES <span aria-hidden="true">↗</span>
@@ -251,12 +254,13 @@ export function AgencyWork() {
                   <span>G&L / SAMPLE 0{i + 1}</span>
                   <b>↗</b>
                 </div>
-                <img
+                <Image
                   src={`/assets/${s.image}`}
                   alt={`${s.title} sample website preview`}
                   width="1440"
                   height="1000"
                   loading="lazy"
+                  sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 30vw"
                 />
               </div>
               <div className="project-meta">
@@ -311,12 +315,13 @@ export function AgencyWork() {
                 ×
               </button>
             </div>
-            <img
+            <Image
               className="gallery-main"
               src={`/assets/${gallery.gallery[index]}`}
               alt={`${gallery.title} — ${index === 0 ? "project overview" : index === 1 ? "3D layout view" : "floor plan"}`}
               width="1440"
               height="1000"
+              sizes="(max-width: 760px) 94vw, 80vw"
             />
             {gallery.gallery.length > 1 && (
               <div className="gallery-navigation">

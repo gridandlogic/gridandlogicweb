@@ -1,54 +1,18 @@
-"use client";
-import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export function Brand() {
+function Brand() {
   return (
-    <a className="brand" href="/" aria-label="Grid and Logic home">
-      <img src="/assets/logo.png" alt="" width="43" height="43" />
+    <Link className="brand" href="/" aria-label="Grid and Logic home">
+      <Image src="/icon-192.png" alt="" width={43} height={43} sizes="43px" />
       grid
       <span>
-        <em>&</em>logic
+        <em>&amp;</em>logic
       </span>
-    </a>
+    </Link>
   );
 }
-export function AgencyHeader() {
-  const [open, setOpen] = useState(false);
-  return (
-    <header className="header">
-      <nav className="nav wrap" aria-label="Main navigation">
-        <Brand />
-        <div className={`navlinks ${open ? "open" : ""}`} id="navigation">
-          {[
-            ["Services", "/#services"],
-            ["Our work", "/#work"],
-            ["Samples", "/#samples"],
-            ["The studio", "/#about"],
-          ].map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
-              {label}
-            </a>
-          ))}
-        </div>
-        <a className="btn small" href="/#contact">
-          Let’s talk{" "}
-          <span className="arrow" aria-hidden="true">
-            ↗
-          </span>
-        </a>
-        <button
-          className="menu-toggle"
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          aria-expanded={open}
-          aria-controls="navigation"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? "×" : "☰"}
-        </button>
-      </nav>
-    </header>
-  );
-}
+
 export function AgencyFooter() {
   return (
     <>
@@ -90,12 +54,12 @@ export function AgencyFooter() {
               </p>
             </div>
             <nav aria-label="Footer navigation">
-              <a href="/">Home</a>
-              <a href="/work/">Our work</a>
-              <a href="/about/">About the studio</a>
-              <a href="/#samples">Samples</a>
-              <a href="/services/">Services</a>
-              <a href="/#contact">Contact</a>
+              <Link href="/">Home</Link>
+              <Link href="/work/">Our work</Link>
+              <Link href="/about/">About the studio</Link>
+              <Link href="/#samples">Samples</Link>
+              <Link href="/services/">Services</Link>
+              <Link href="/#contact">Contact</Link>
             </nav>
             <div className="closing-note">
               <span className="dot" /> Remote studio. Worldwide ambition.
@@ -109,13 +73,13 @@ export function AgencyFooter() {
               </a>
             </div>
           </div>
-          <a className="closing-cta" href="/#contact">
+          <Link className="closing-cta" href="/#contact">
             Get in touch<span aria-hidden="true">↗</span>
-          </a>
+          </Link>
           <div className="footer-bottom">
-            <span>GRID & LOGIC © {new Date().getFullYear()}</span>
+            <span>GRID &amp; LOGIC © {new Date().getFullYear()}</span>
             <div>
-              <a href="/privacy/">Privacy</a>
+              <Link href="/privacy/">Privacy</Link>
               <a href="/sitemap.xml">Sitemap ↗</a>
               <span>DESIGN MEETS POSSIBILITY.</span>
             </div>

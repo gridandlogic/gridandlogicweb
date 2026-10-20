@@ -9,28 +9,24 @@ const featuredWork = [
   {
     title: "Sofa Configurator",
     category: "3D Product Configurator",
-    metric: "+32% conversion",
     image: "/images/sofa-configrator.png",
     href: "https://abdulahad2468.github.io/sofa-configrator/",
   },
   {
     title: "Clothing Store",
     category: "Ecommerce",
-    metric: "+27% AOV",
     image: "/images/clothing%20store.png",
     href: "https://clothing-lovat.vercel.app/",
   },
   {
     title: "Pixel Nest Agency",
     category: "Agency Website",
-    metric: "+45% engagement",
     image: "/images/pixelnest.png",
     href: "https://pixelnestagy.vercel.app",
   },
   {
     title: "Multi-brand Storefront",
     category: "Ecommerce",
-    metric: "-28% returns",
     image: "/images/ecomerce%20website.png",
     href: "https://e-commerce-chi-eight-35.vercel.app/",
   },
@@ -55,11 +51,6 @@ function ProjectCard({ project, priority = false }) {
           sizes="(max-width: 768px) 100vw, 560px"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
-        <div className="absolute bottom-4 left-4">
-          <span className="inline-block px-3 py-1 bg-accent/90 text-canvas text-xs font-semibold rounded-full">
-            {project.metric}
-          </span>
-        </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
@@ -91,8 +82,8 @@ export function Work() {
         <SectionHeading
           index="02"
           eyebrow="Featured Work"
-          title="Results that speak for themselves"
-          lead="Every project is built around measurable business outcomes."
+          title="Selected projects and digital experiences"
+          lead="A closer look at websites, ecommerce experiences, and product tools we have built."
         />
 
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
