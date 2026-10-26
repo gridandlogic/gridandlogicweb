@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { configurators } from "@/app/data/configurators";
 const work = [
   {
     title: "Pixel Nest",
@@ -66,6 +68,11 @@ const samples = [
     image: "dental-clinic.webp",
     href: "https://dental-clinic.gridandlogic.com/",
   },
+  ...configurators.map((sample) => ({
+    title: sample.name,
+    type: sample.category,
+    href: sample.url,
+  })),
 ];
 function tilt(e) {
   if (matchMedia("(hover: none), (prefers-reduced-motion: reduce)").matches)
@@ -229,8 +236,8 @@ export function AgencyWork() {
             </h2>
           </div>
           <p>
-            Explore three sample websites to see different directions for your
-            next project. Each one is a live example you can try.
+            Browse live website samples and product configurator experiences
+            built by Grid &amp; Logic.
           </p>
         </div>
         <div className="sample-grid">
@@ -243,7 +250,7 @@ export function AgencyWork() {
               rel="noopener noreferrer"
             >
               <div
-                className="sample-visual"
+                className={`sample-visual${s.image ? "" : " sample-visual-text"}`}
                 onPointerMove={tilt}
                 onPointerLeave={untilt}
               >
@@ -254,14 +261,22 @@ export function AgencyWork() {
                   <span>G&L / SAMPLE 0{i + 1}</span>
                   <b>↗</b>
                 </div>
-                <Image
-                  src={`/assets/${s.image}`}
-                  alt={`${s.title} sample website preview`}
-                  width="1440"
-                  height="1000"
-                  loading="lazy"
-                  sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 30vw"
-                />
+                {s.image ? (
+                  <Image
+                    src={`/assets/${s.image}`}
+                    alt={`${s.title} sample website preview`}
+                    width="1440"
+                    height="1000"
+                    loading="lazy"
+                    sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 30vw"
+                  />
+                ) : (
+                  <span className="sample-title-art" aria-hidden="true">
+                    <span>GRID &amp; LOGIC / PRODUCT EXPERIENCE</span>
+                    <strong>{s.title}</strong>
+                    <span>OPEN LIVE SAMPLE ↗</span>
+                  </span>
+                )}
               </div>
               <div className="project-meta">
                 <div>
@@ -275,6 +290,11 @@ export function AgencyWork() {
             </a>
           ))}
         </div>
+        <p className="configurator-index-link">
+          <Link className="text-link" href="/configurators/">
+            Explore all product configurator samples ↗
+          </Link>
+        </p>
       </section>
       <dialog
         className="image-dialog"

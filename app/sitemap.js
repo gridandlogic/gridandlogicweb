@@ -7,6 +7,7 @@ export default function sitemap() {
     "/services/",
     "/about/",
     "/work/",
+    "/configurators/",
     ...projects.map((p) => `/work/${p.slug}/`),
     ...servicePages.map((s) => `/services/${s.slug}/`),
     "/privacy/",
