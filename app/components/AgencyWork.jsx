@@ -72,6 +72,8 @@ const samples = [
     title: sample.name,
     type: sample.category,
     href: sample.url,
+    image: sample.image,
+    imageAlt: sample.imageAlt,
   })),
 ];
 function tilt(e) {
@@ -250,33 +252,18 @@ export function AgencyWork() {
               rel="noopener noreferrer"
             >
               <div
-                className={`sample-visual${s.image ? "" : " sample-visual-text"}`}
+                className="sample-visual"
                 onPointerMove={tilt}
                 onPointerLeave={untilt}
               >
-                <div className="browser-bar">
-                  <i />
-                  <i />
-                  <i />
-                  <span>G&L / SAMPLE 0{i + 1}</span>
-                  <b>↗</b>
-                </div>
-                {s.image ? (
-                  <Image
-                    src={`/assets/${s.image}`}
-                    alt={`${s.title} sample website preview`}
-                    width="1440"
-                    height="1000"
-                    loading="lazy"
-                    sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 30vw"
-                  />
-                ) : (
-                  <span className="sample-title-art" aria-hidden="true">
-                    <span>GRID &amp; LOGIC / PRODUCT EXPERIENCE</span>
-                    <strong>{s.title}</strong>
-                    <span>OPEN LIVE SAMPLE ↗</span>
-                  </span>
-                )}
+                <Image
+                  src={`/assets/${s.image}`}
+                  alt={s.imageAlt || `${s.title} sample website homepage`}
+                  width="1440"
+                  height="960"
+                  loading="lazy"
+                  sizes="(max-width: 760px) 90vw, (max-width: 1050px) 42vw, 30vw"
+                />
               </div>
               <div className="project-meta">
                 <div>

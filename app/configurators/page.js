@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { configurators } from "@/app/data/configurators";
 import { StructuredData } from "@/app/components/StructuredData";
@@ -45,6 +46,23 @@ export default function ConfiguratorsPage() {
         <div className="configurator-sample-grid">
           {configurators.map((sample) => (
             <article className="configurator-sample" key={sample.slug}>
+              <a
+                className="configurator-preview-link"
+                href={sample.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${sample.name}`}
+              >
+                <Image
+                  className="configurator-preview"
+                  src={`/assets/${sample.image}`}
+                  alt={sample.imageAlt}
+                  width={1440}
+                  height={960}
+                  sizes="(max-width: 760px) 90vw, 45vw"
+                  loading="lazy"
+                />
+              </a>
               <div className="eyebrow">
                 <span className="dot" /> {sample.category}
               </div>

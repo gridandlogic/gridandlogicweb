@@ -218,31 +218,6 @@
   object-position: top;
   display: block;
 }
-.browser-bar {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0 11px;
-  background: #141e18;
-}
-.browser-bar i {
-  height: 4px;
-  width: 4px;
-  border-radius: 50%;
-  background: #4d6156;
-}
-.browser-bar span {
-  font: 7px monospace;
-  letter-spacing: 1px;
-  margin: auto;
-  color: #91a599;
-}
-.browser-bar b {
-  font-size: 13px;
-  color: var(--cyan);
-  font-weight: 400;
-}
 .sample h3 {
   font-size: 20px;
   margin-top: 4px;
@@ -259,33 +234,6 @@
   height: 29px;
   font-size: 17px;
 }
-.sample-visual-text {
-  aspect-ratio: 1.38;
-  display: grid;
-  place-items: center;
-  padding: 25px;
-  background:
-    radial-gradient(ellipse at 75% 25%, #00e6e622, transparent 45%),
-    linear-gradient(145deg, #15271f, #0d1411 72%);
-}
-.sample-title-art {
-  width: 100%;
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  color: #9bad9f;
-  font: 8px monospace;
-  letter-spacing: 1.4px;
-}
-.sample-title-art strong {
-  color: #e6f1e9;
-  font-size: clamp(22px, 2.7vw, 36px);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-}
 .configurator-index-link {
   margin-top: 32px;
 }
@@ -295,11 +243,36 @@
   gap: 20px;
 }
 .configurator-sample {
-  min-height: 210px;
-  padding: 26px;
+  overflow: hidden;
+  padding: 0 0 26px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(145deg, #14221b, #0b110e 78%);
+}
+.configurator-preview-link {
+  display: block;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.configurator-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.35s ease;
+}
+.configurator-preview-link:hover .configurator-preview {
+  transform: scale(1.025);
+}
+.configurator-sample > .eyebrow,
+.configurator-sample > h2,
+.configurator-sample > p,
+.configurator-sample > .text-link {
+  margin-left: 26px;
+  margin-right: 26px;
 }
 .configurator-sample h2 {
   margin: 20px 0 8px;
