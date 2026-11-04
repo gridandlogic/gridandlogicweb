@@ -113,7 +113,7 @@ export const projects = [
     description:
       "Grid & Logic’s work for Zaka Engineering: an updated website and a product catalogue for a container engineering business.",
     image: "zaka.webp",
-    external: "https://zakaengineeringcontainers.vercel.app/",
+    external: "https://zakaengineeringcontainers.com/",
     intro:
       "For a container engineering business, the website and catalogue help prospective customers understand the offering before starting a conversation. Our work with Zaka Engineering covered a website update and catalogue.",
     scope: [

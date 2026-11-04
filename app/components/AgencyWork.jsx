@@ -23,7 +23,7 @@ const work = [
     image: "zaka.webp",
     description:
       "An updated digital presence and product catalogue for a container engineering business.",
-    href: "https://zakaengineeringcontainers.vercel.app/",
+    href: "https://zakaengineeringcontainers.com/",
     label: "View website",
   },
   {

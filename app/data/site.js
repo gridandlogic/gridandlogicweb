@@ -78,7 +78,7 @@ export const services = [
 
 export const projects = [
  {title:"Pixel Nest",category:"Website & sprint board",image:"/assets/pixelnest-current.webp",href:"https://pixelnestagy.vercel.app/"},
- {title:"Zaka Engineering",category:"Website update & catalogue",image:"/assets/zaka.webp",href:"https://zakaengineeringcontainers.vercel.app/"},
+ {title:"Zaka Engineering",category:"Website update & catalogue",image:"/assets/zaka.webp",href:"https://zakaengineeringcontainers.com/"},
  {title:"Container Studio",category:"3D configurator",image:"/assets/container-exterior.webp"},
  {title:"Sofa Configurator",category:"3D configurator",image:"/assets/sofa.webp"}
 ];
