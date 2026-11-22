@@ -1,6 +1,7 @@
 // Editorial content based on the agency's stated services and project scope.
 // Keep prices, dates, client quotes and measured results out until substantiated.
 export const serviceAnswers = {
+  "catalogue-design": [["What do you need to create a product catalogue?", "Share your product list, specifications, approved descriptions, logo, and product images. We agree the page count, file formats, and revision process before designing the catalogue."], ["Can you add the catalogue to our website?", "Yes. A website download page can be included in the scope so customers can access your published catalogue. Zaka Engineering’s design catalogues are available on its downloads page."]],
   "web-development": [
     [
       "What does a business website project include?",
@@ -46,7 +47,7 @@ export const serviceAnswers = {
   "digital-marketing": [
     [
       "What digital marketing work does Grid & Logic offer?",
-      "Our stated digital marketing scope covers social content planning, branded creatives, campaign messaging, launch assets, and campaign landing pages. We agree the channels, asset formats, approval process, and publishing responsibilities before work begins.",
+      "We offer social media management, content planning, branded creatives, campaign messaging, and launch assets. We manage Zaka Engineering Container & Prefab’s social media alongside the website and catalogue we created. Channels, approvals, and publishing responsibilities are agreed before work starts.",
     ],
     [
       "Can you create content that matches our brand?",
@@ -72,6 +73,8 @@ export const serviceAnswers = {
     ],
   ],
   "seo-performance": [
+    ["Can you guarantee a number one Google ranking?", "No. Search rankings depend on the query, competition, content quality, links, and search engine decisions. Our work improves technical foundations, useful service content, and measurement without promising a fixed position."],
+    ["Can you help search engines discover our service pages?", "We plan crawlable navigation, canonical URLs, clear headings and descriptions, internal links, XML sitemaps, and relevant structured data. Search Console can then be used to inspect URLs and monitor indexing."],
     [
       "What is included in a technical SEO review?",
       "A review can cover crawl access, indexable pages, canonical URLs, metadata, heading structure, internal links, sitemap coverage, structured data, and loading performance. Search Console and Bing Webmaster Tools access helps confirm how search engines see the site.",
@@ -81,55 +84,78 @@ export const serviceAnswers = {
 
 export const projects = [
   {
-    slug: "pixel-nest",
-    name: "Pixel Nest",
-    category: "Agency website & sprint board",
-    description:
-      "Grid & Logic’s work with Pixel Nest: an agency website and a sprint board to support the team’s workflow.",
-    image: "pixelnest-current.webp",
-    external: "https://pixelnestagy.vercel.app/",
-    intro:
-      "A website introduces an agency to prospective clients. A sprint board supports the work behind that public presence. Our collaboration with Pixel Nest covered both parts of that experience.",
-    scope: [
+    "slug": "xach-media",
+    "name": "Xach Media",
+    "category": "Creative agency website",
+    "description": "A website for Xach Media, a digital marketing and creative agency, presenting its services, studio concepts, and project enquiries.",
+    "image": "xach-media.webp",
+    "external": "https://xachmedia.com/",
+    "intro": "Xach Media brings social media, reels, creative direction, and brand presence into one agency offering. The website gives visitors a place to explore that offering and start a project conversation.",
+    "scope": [
       "Agency website design and development",
-      "Sprint board for organising the team’s workflow",
+      "Service presentation and enquiry journey"
     ],
-    sections: [
+    "sections": [
       [
-        "A public presence for the agency",
-        "The website gives Pixel Nest a place to present its agency online. This part of the collaboration covered website design and development, bringing the public-facing experience into one digital destination.",
+        "A clear introduction",
+        "The homepage introduces Xach Media’s creative direction and connects visitors to its services and studio concepts."
       ],
       [
-        "A workspace for delivery",
-        "The sprint board supports the team’s workflow alongside the website work. It addresses a different need: keeping project work organised while the public website introduces the agency.",
-      ],
+        "From exploration to enquiry",
+        "The website brings service information and project enquiries together so prospective clients can understand the agency before getting in touch."
+      ]
     ],
-    services: ["web-development", "branding"],
+    "services": [
+      "web-development",
+      "branding"
+    ]
   },
   {
-    slug: "zaka-engineering",
-    name: "Zaka Engineering",
-    category: "Website update & product catalogue",
-    description:
-      "Grid & Logic’s work for Zaka Engineering: an updated website and a product catalogue for a container engineering business.",
-    image: "zaka.webp",
-    external: "https://zakaengineeringcontainers.com/",
-    intro:
-      "For a container engineering business, the website and catalogue help prospective customers understand the offering before starting a conversation. Our work with Zaka Engineering covered a website update and catalogue.",
-    scope: [
-      "Website update for the engineering business",
-      "Product catalogue presentation",
+    "slug": "zaka-engineering",
+    "name": "Zaka Engineering Container & Prefab",
+    "category": "Website, catalogue & social media management",
+    "description": "Grid & Logic created the Zaka Engineering Container & Prefab website and catalogue and manages its social media presence.",
+    "image": "zaka.webp",
+    "external": "https://zakaengineeringcontainers.com/",
+    "intro": "Our work for Zaka Engineering Container & Prefab connects its website, product catalogue, and ongoing social media management. Customers can explore the business online, browse its design catalogues, and follow its social channels.",
+    "scope": [
+      "Business website design and development",
+      "Product catalogue design and presentation",
+      "Ongoing social media management"
     ],
-    sections: [
+    "sections": [
       [
-        "An updated digital presence",
-        "The website update brings Zaka Engineering’s business presentation into a dedicated online experience. The work focuses on communicating the business and giving prospective customers a place to explore it.",
+        "A website for the business",
+        "We created the website to present Zaka Engineering Container & Prefab online and give prospective customers a place to explore its container and prefab offering."
       ],
       [
-        "Product information in one place",
-        "The catalogue supports product discovery alongside the company website. Together, the website and catalogue provide a clearer starting point for customers researching the business’s container offering.",
+        "A catalogue customers can explore",
+        "We created the catalogue to present product and design information. The published catalogues are available through Zaka’s website downloads page."
       ],
+      [
+        "An ongoing social presence",
+        "We manage Zaka’s social media alongside the website and catalogue work, connecting its digital presentation across Instagram and Facebook."
+      ]
     ],
-    services: ["web-development", "ecommerce"],
-  },
+    "links": [
+      [
+        "Browse design catalogues",
+        "https://www.zakaengineeringcontainers.com/downloads"
+      ],
+      [
+        "Instagram",
+        "https://www.instagram.com/zakengineeringcontainersprefab/"
+      ],
+      [
+        "Facebook",
+        "https://www.facebook.com/share/1NKJbN8jz3/"
+      ]
+    ],
+    "services": [
+      "web-development",
+      "branding",
+      "catalogue-design",
+      "digital-marketing"
+    ]
+  }
 ];

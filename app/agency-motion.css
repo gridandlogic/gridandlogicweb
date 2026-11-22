@@ -573,3 +573,22 @@ button:disabled {
     transform: none !important;
   }
 }
+
+/* Transform and opacity motion avoids reflow; content stays visible without JS. */
+.profile-links { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:26px; }
+.profile-links a { color:var(--cyan); text-decoration:underline; text-underline-offset:5px; }
+.ceo-role { color:var(--cyan); }
+.ceo-bio { border-top:1px solid var(--line); }
+.project-profile-links { margin-top:40px; }
+.footer-social { flex-wrap:wrap; }
+.service-detail-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
+.service-detail-grid h2 { font-size:clamp(25px,3vw,38px); margin-bottom:18px; }
+@media (prefers-reduced-motion:no-preference) {
+  .reveal-ready { opacity:0; transform:translateY(22px); transition:opacity .5s ease var(--reveal-delay,0ms),transform .5s ease var(--reveal-delay,0ms); }
+  .reveal-ready.revealed { opacity:1; transform:none; }
+  .profile-links a, .service-link, .btn { transition:transform .2s ease,border-color .2s ease; }
+  .profile-links a:hover, .btn:hover { transform:translateY(-3px); }
+  .service-link:hover { transform:translateY(-4px); }
+}
+@media(max-width:760px) { .service-detail-grid { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .reveal-ready { opacity:1; transform:none; transition:none; } }

@@ -5,11 +5,11 @@ import { StructuredData } from "@/app/components/StructuredData";
 export const metadata = {
   title: "Selected Website Projects",
   description:
-    "Explore Grid & Logic’s work with Pixel Nest and Zaka Engineering, including agency websites, workflow tools, and product catalogues.",
+    "Explore Grid & Logic’s work with Xach Media and Zaka Engineering, including agency websites, catalogue design, and social media management.",
   alternates: { canonical: "/work/" },
   openGraph: {
     title: "Selected projects | Grid & Logic",
-    description: "Website, workflow, and catalogue projects by Grid & Logic.",
+    description: "Website, catalogue, and social media projects by Grid & Logic.",
     url: "/work/",
   },
 };
@@ -30,7 +30,7 @@ export default function Work() {
           </div>
           <h1>Our work, in context.</h1>
           <p>
-            A closer look at the scope of our collaborations with Pixel Nest and
+            A closer look at the scope of our collaborations with Xach Media and
             Zaka Engineering.
           </p>
         </div>

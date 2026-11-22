@@ -91,6 +91,7 @@ export default async function Project({ params }) {
             </div>
           ))}
         </div>
+        {p.links && (<nav className="profile-links project-profile-links" aria-label={`${p.name} profiles and catalogue`}>{p.links.map(([label,url]) => (<a key={label} href={url} target="_blank" rel="noopener noreferrer">{label} ↗</a>))}</nav>)}
       </section>
       <section className="section wrap">
         <h2>Planning something similar?</h2>

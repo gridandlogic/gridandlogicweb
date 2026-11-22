@@ -1,4 +1,5 @@
 export const servicePages = [
+  { slug: "catalogue-design", name: "Product catalogue design", heading: "Your products, clearly presented.", description: "Product catalogue design for businesses that need a clear, branded presentation of their products, specifications, and services.", tags: "Product catalogues · Layout design · Digital downloads", paragraph: "We turn product information into a catalogue customers can browse and share. For Zaka Engineering Container & Prefab, our work includes the website, catalogue creation, and ongoing social media management.", items: ["Catalogue structure and page planning", "Product and specification layouts", "Brand styling and visual consistency", "Digital catalogue files", "Website download presentation"] },
   {
     slug: "web-development",
     name: "Web development",
@@ -52,15 +53,15 @@ export const servicePages = [
   },
   {
     slug: "digital-marketing",
-    name: "Digital marketing & social content",
+    name: "Social media management & digital marketing",
     heading: "Give your brand something to say.",
     description:
-      "Social content and launch campaigns that connect a consistent brand with the right audience.",
-    tags: "Social content · Campaign creative · Launch planning",
+      "Social media management, content planning, and branded creative for a consistent business presence on Instagram and Facebook.",
+    tags: "Social media management · Instagram · Facebook · Content planning",
     paragraph:
-      "We connect brand strategy with the content people see every day. Our digital marketing work focuses on social content, campaign creative, and launch assets that communicate what makes your business worth choosing.",
+      "We manage social media and create content around your business. Our work can include content planning, branded posts, campaign creative, and launch assets. For Zaka Engineering Container & Prefab, we created the website and catalogue and manage its social media presence.",
     items: [
-      "Social content planning",
+      "Social media management and content planning",
       "Branded social media creatives",
       "Launch campaign assets",
       "Messaging and creative direction",
@@ -81,6 +82,7 @@ export const servicePages = [
       "Colour and typography systems",
       "Digital brand guidelines",
       "Social media design templates",
+      "Product catalogue design",
       "Website and campaign art direction",
     ],
   },
@@ -103,13 +105,15 @@ export const servicePages = [
   },
 ];
 export const faqs = [
+  ["Who is the CEO of Grid & Logic?", "Abdul Ahad Khan is the CEO of Grid & Logic. He leads the agency’s website development, ecommerce, 3D product experiences, brand design, and social media management work. His public profiles are linked in the CEO bio on this website."],
+  ["Do you manage social media for businesses?", "Yes. Grid & Logic offers social media management, content planning, and branded creative for businesses. We manage the social media presence of Zaka Engineering Container & Prefab, alongside the website and catalogue we created for the business."],
   [
     "What is Grid & Logic?",
     "Grid & Logic, also written Grid and Logic, is a remote digital agency and product studio working with brands worldwide. We design and build websites, ecommerce stores, and 3D product configurators, alongside brand identity, social content, and digital marketing creative.",
   ],
   [
     "What services does Grid & Logic offer?",
-    "Our services include web development, ecommerce development, real-time 3D product configurators, branding and design, social content and campaign creative, and technical SEO and website performance work.",
+    "Our services include web development, ecommerce development, real-time 3D product configurators, branding and design, social media management, catalogue design, campaign creative, and technical SEO and website performance work.",
   ],
   [
     "Can you build our website and help with our brand?",

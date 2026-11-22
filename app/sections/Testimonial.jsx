@@ -5,6 +5,7 @@ import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { testimonial } from "@/app/data/site";
 
 export function Testimonial() {
+  if (!testimonial) return null;
   return (
     <section className="relative overflow-hidden border-t border-line py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10 glow-accent opacity-70" aria-hidden="true" />

@@ -1,3 +1,4 @@
+import { serviceDetails } from "@/app/data/service-details";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { servicePages } from "@/app/data/agency";
@@ -79,6 +80,10 @@ export default async function Service({ params }) {
           </p>
         </div>
       </section>
+      <section className="section wrap service-detail-grid">
+        {serviceDetails[slug]?.map(([heading, copy]) => (<article className="reveal" key={heading}><h2>{heading}</h2><p>{copy}</p></article>))}
+      </section>
+      {slug === "3d-configurators" && (<section className="section wrap"><h2>Explore live product experiences</h2><p>See our lighting configurator and product sample websites before planning your own experience.</p><Link className="text-link" href="/configurators/">Browse configurator samples ↗</Link></section>)}
       <section className="section faq">
         <div className="wrap faq-layout">
           <div>

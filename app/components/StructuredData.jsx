@@ -1,4 +1,5 @@
 import { siteUrl } from "@/app/lib/site-url";
+import { ceo } from "@/app/data/team";
 import { faqs } from "@/app/data/agency";
 export function StructuredData({
   faq = false,
@@ -24,15 +25,27 @@ export function StructuredData({
     },
     telephone: "+923374992211",
     description:
-      "An independent digital agency and product studio building websites, ecommerce stores, 3D configurators, brand identities, and digital marketing creative for businesses worldwide.",
+      "An independent digital agency and product studio building websites, ecommerce stores, 3D configurators, brand identities, social media management, catalogues, and digital marketing creative for businesses worldwide.",
     sameAs: [
       "https://www.instagram.com/gridandlogic/",
       "https://www.facebook.com/profile.php?id=61592258005096",
       "https://www.threads.com/@gridandlogic",
+      "https://www.linkedin.com/company/gridandlogic/",
+      "https://github.com/gridandlogic/",
     ],
   };
   const graph = [
     org,
+    {
+      "@type": "Person",
+      "@id": siteUrl + "/about/#abdul-ahad-khan",
+      name: ceo.name,
+      jobTitle: "CEO",
+      description: ceo.bio,
+      url: siteUrl + "/about/#abdul-ahad-khan",
+      worksFor: { "@id": org["@id"] },
+      sameAs: ceo.profiles.map(([, url]) => url),
+    },
     {
       "@type": "WebSite",
       "@id": siteUrl + "/#website",

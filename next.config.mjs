@@ -4,6 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   async redirects() {
     return [
+      { source: "/work/pixel-nest", destination: "/work/xach-media/", permanent: true },
       {
         source: "/:path*",
         has: [{ type: "host", value: "gridandlogic.com" }],

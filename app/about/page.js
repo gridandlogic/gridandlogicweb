@@ -1,10 +1,11 @@
+import { CeoBio } from "@/app/components/CeoBio";
 import Link from "next/link";
 import { StructuredData } from "@/app/components/StructuredData";
 import { servicePages, faqs } from "@/app/data/agency";
 export const metadata = {
   title: "About Our Digital Agency",
   description:
-    "What is Grid & Logic? An independent remote digital agency and product studio for web development, ecommerce, 3D experiences, branding, and digital marketing.",
+    "Meet CEO Abdul Ahad Khan and Grid & Logic, a digital agency for website development, 3D configurators, social media management, and catalogue design.",
   alternates: { canonical: "/about/" },
   openGraph: {
     title: "About Grid & Logic",
@@ -32,7 +33,7 @@ export default function About() {
             Design meets logic
           </div>
           <h1>What is Grid & Logic?</h1>
-          <p>{faqs[0][1]}</p>
+          <p>{faqs.find(([question]) => question === "What is Grid & Logic?")[1]}</p>
         </div>
       </section>
       <section className="section wrap content-grid">
@@ -72,6 +73,7 @@ export default function About() {
           </Link>
         </div>
       </section>
+      <CeoBio />
       <section className="section wrap" aria-labelledby="author-bio-title">
         <div className="content-grid">
           <div>

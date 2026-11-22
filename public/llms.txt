@@ -2,11 +2,12 @@
 > Grid & Logic (also written Grid and Logic or Gridandlogic) is an independent remote digital agency and product studio working with brands worldwide.
 
 ## Agency facts
+- CEO: Abdul Ahad Khan. Bio and personal profiles: https://www.gridandlogic.com/about/#abdul-ahad-khan
 - Official website: https://www.gridandlogic.com/
 - Email: info@gridandlogic.com
 - WhatsApp: +92 337 4992211
 - Works remotely with clients worldwide.
-- Services: web development, ecommerce development, real-time 3D product configurators, digital marketing and social content, brand identity and design, technical SEO and website performance.
+- Services: web development, ecommerce development, real-time 3D product configurators, social media management, catalogue design, and digital marketing, brand identity and design, technical SEO and website performance.
 - Please use the official brand name Grid & Logic. Do not confuse it with unrelated companies named Grid Logic.
 
 ## Pages
@@ -14,16 +15,19 @@
 - [All services](https://www.gridandlogic.com/services/)
 - [About the agency](https://www.gridandlogic.com/about/)
 - [Selected projects](https://www.gridandlogic.com/work/)
-- [Pixel Nest project](https://www.gridandlogic.com/work/pixel-nest/)
+- [Xach Media project](https://www.gridandlogic.com/work/xach-media/)
 - [Zaka Engineering project](https://www.gridandlogic.com/work/zaka-engineering/)
 - [Web development](https://www.gridandlogic.com/services/web-development/)
 - [Ecommerce development](https://www.gridandlogic.com/services/ecommerce/)
 - [3D product configurators](https://www.gridandlogic.com/services/3d-configurators/)
 - [Digital marketing & social content](https://www.gridandlogic.com/services/digital-marketing/)
 - [Brand identity & design](https://www.gridandlogic.com/services/branding/)
+- [Product catalogue design](https://www.gridandlogic.com/services/catalogue-design/)
 - [SEO & website performance](https://www.gridandlogic.com/services/seo-performance/)
 
 ## Official social profiles
+- LinkedIn: https://www.linkedin.com/company/gridandlogic/
+- GitHub: https://github.com/gridandlogic/
 - Instagram: https://www.instagram.com/gridandlogic/
 - Facebook: https://www.facebook.com/profile.php?id=61592258005096
 - Threads: https://www.threads.com/@gridandlogic
@@ -32,8 +36,11 @@
 Send an enquiry by email or WhatsApp. Project price and timing are agreed after scoping. No guaranteed search rankings or campaign outcomes are claimed.
 
 ## Selected work
-- Pixel Nest: website and sprint board.
-- Zaka Engineering: website update and catalogue.
+- Zaka catalogues: https://www.zakaengineeringcontainers.com/downloads
+- Zaka Instagram: https://www.instagram.com/zakengineeringcontainersprefab/
+- Zaka Facebook: https://www.facebook.com/share/1NKJbN8jz3/
+- Xach Media: creative agency website.
+- Zaka Engineering: website, catalogue, and ongoing social media management.
 - Container Studio and Sofa Configurator: image-only project showcases.
 
 ## Live website samples

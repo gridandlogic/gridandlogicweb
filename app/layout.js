@@ -18,7 +18,7 @@ export const metadata = {
     template: "%s | Grid & Logic",
   },
   description:
-    "Grid & Logic is a website development agency building fast business websites, ecommerce stores, and interactive 3D product configurators for brands worldwide.",
+    "Grid & Logic is a website development agency building business websites, ecommerce stores, 3D configurators, and social media management for brands worldwide.",
   robots: { index: true, follow: true, "max-image-preview": "large" },
   openGraph: {
     type: "website",

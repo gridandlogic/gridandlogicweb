@@ -77,7 +77,7 @@ export const services = [
 ];
 
 export const projects = [
- {title:"Pixel Nest",category:"Website & sprint board",image:"/assets/pixelnest-current.webp",href:"https://pixelnestagy.vercel.app/"},
+ {title:"Xach Media",category:"Creative agency website",image:"/assets/xach-media.webp",href:"https://xachmedia.com/"},
  {title:"Zaka Engineering",category:"Website update & catalogue",image:"/assets/zaka.webp",href:"https://zakaengineeringcontainers.com/"},
  {title:"Container Studio",category:"3D configurator",image:"/assets/container-exterior.webp"},
  {title:"Sofa Configurator",category:"3D configurator",image:"/assets/sofa.webp"}
@@ -110,14 +110,7 @@ export const processSteps = [
   },
 ];
 
-export const testimonial = {
-  quote: "Creative, reliable, and always one step ahead.",
-  body:
-    "Working with Grid & Logic transformed our online presence. They built our website, grew our social channels, and delivered design we're genuinely proud of.",
-  name: "Ammar",
-  role: "CEO, Pixel Nest",
-  avatar: "/images/ammar.png",
-};
+export const testimonial = null;
 
 export const posts = [
   {

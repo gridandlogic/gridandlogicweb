@@ -4,7 +4,7 @@ export const metadata = {
     absolute: "Website Development Agency & 3D Configurators | Grid & Logic",
   },
   description:
-    "Grid & Logic is a website development agency building fast websites, ecommerce stores, and interactive 3D product configurators for brands worldwide. Explore our work and services.",
+    "Grid & Logic builds business websites, ecommerce stores, and 3D product configurators, with social media management, catalogue design, branding, and SEO services.",
   alternates: { canonical: "/" },
 };
 export default AgencyHome;

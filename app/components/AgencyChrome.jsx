@@ -20,6 +20,8 @@ export function AgencyFooter() {
         <div className="wrap">
           <div className="closing-social">
             <div className="footer-social">
+              <a href="https://www.linkedin.com/company/gridandlogic/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+              <a href="https://github.com/gridandlogic/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               <a
                 href="https://www.instagram.com/gridandlogic/"
                 target="_blank"

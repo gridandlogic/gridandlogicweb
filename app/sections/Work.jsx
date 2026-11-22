@@ -19,10 +19,10 @@ const featuredWork = [
     href: "https://clothing-lovat.vercel.app/",
   },
   {
-    title: "Pixel Nest Agency",
+    title: "Xach Media",
     category: "Agency Website",
-    image: "/images/pixelnest.png",
-    href: "https://pixelnestagy.vercel.app",
+    image: "/assets/xach-media.webp",
+    href: "https://xachmedia.com/",
   },
   {
     title: "Multi-brand Storefront",

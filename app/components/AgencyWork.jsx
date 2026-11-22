@@ -2,30 +2,10 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { projects } from "@/app/data/search-content";
 import { configurators } from "@/app/data/configurators";
 const work = [
-  {
-    title: "Pixel Nest",
-    detail: "/work/pixel-nest/",
-    category: "web",
-    type: "Agency website & sprint board",
-    image: "pixelnest-current.webp",
-    description:
-      "Website design and development, with a sprint board to support the team’s workflow.",
-    href: "https://pixelnestagy.vercel.app/",
-    label: "View website",
-  },
-  {
-    title: "Zaka Engineering",
-    detail: "/work/zaka-engineering/",
-    category: "web",
-    type: "Website update & catalogue",
-    image: "zaka.webp",
-    description:
-      "An updated digital presence and product catalogue for a container engineering business.",
-    href: "https://zakaengineeringcontainers.com/",
-    label: "View website",
-  },
+  ...projects.map(p => ({title:p.name, detail:`/work/${p.slug}/`, category:"web", type:p.category, image:p.image, description:p.description, href:p.external, label:"View website"})),
   {
     title: "Container Studio",
     category: "3d",
@@ -154,7 +134,7 @@ export function AgencyWork() {
             {work.map((p) => (
               <article
                 key={p.title}
-                className="project"
+                className="project reveal"
                 hidden={filter !== "all" && p.category !== filter}
               >
                 <div
@@ -243,9 +223,9 @@ export function AgencyWork() {
           </p>
         </div>
         <div className="sample-grid">
-          {samples.map((s, i) => (
+          {samples.map((s) => (
             <a
-              className="sample"
+              className="sample reveal"
               key={s.title}
               href={s.href}
               target="_blank"

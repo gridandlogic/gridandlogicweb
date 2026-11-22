@@ -1,3 +1,4 @@
+import { CeoBio } from "./CeoBio";
 import AgencyHero from "./AgencyHero";
 import { AgencyWork } from "./AgencyWork";
 import { EnquiryForm } from "./EnquiryForm";
@@ -20,7 +21,7 @@ export default function AgencyHome() {
         <div className="wrap">
           <span>Web development</span>
           <i>✳</i>
-          <span>Digital marketing</span>
+          <span>Social media management</span>
           <i>✳</i>
           <span>Brand & design</span>
           <i>✳</i>
@@ -144,6 +145,7 @@ export default function AgencyHome() {
           </div>
         </div>
       </section>
+      <CeoBio />
       <section className="section faq">
         <div className="wrap faq-layout">
           <div>
