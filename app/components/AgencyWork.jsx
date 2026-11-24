@@ -259,7 +259,7 @@ export function AgencyWork() {
         </div>
         <p className="configurator-index-link">
           <Link className="text-link" href="/configurators/">
-            Explore all product configurator samples ↗
+            Compare 3D configurator packages and demos ↗
           </Link>
         </p>
       </section>

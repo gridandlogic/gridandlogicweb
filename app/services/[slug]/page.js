@@ -1,4 +1,6 @@
 import { serviceDetails } from "@/app/data/service-details";
+import { CustomConfiguratorPage } from "@/app/components/CustomConfiguratorPage";
+import { customDescription, customTitle } from "@/app/data/configurator-offers";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { servicePages } from "@/app/data/agency";
@@ -12,6 +14,15 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const s = servicePages.find((s) => s.slug === slug);
   if (!s) return {};
+  if (slug === "3d-configurators") {
+    const path = "/services/3d-configurators/";
+    return {
+      title: customTitle,
+      description: customDescription,
+      alternates: { canonical: path },
+      openGraph: { title: customTitle + " | Grid & Logic", description: customDescription, url: path },
+    };
+  }
   return {
     title:
       slug === "web-development"
@@ -30,6 +41,7 @@ export default async function Service({ params }) {
   const { slug } = await params;
   const s = servicePages.find((s) => s.slug === slug);
   if (!s) notFound();
+  if (slug === "3d-configurators") return <CustomConfiguratorPage service={s} />;
   return (
     <main id="main">
       <StructuredData service={s} answers={serviceAnswers[slug]} />
@@ -83,7 +95,6 @@ export default async function Service({ params }) {
       <section className="section wrap service-detail-grid">
         {serviceDetails[slug]?.map(([heading, copy]) => (<article className="reveal" key={heading}><h2>{heading}</h2><p>{copy}</p></article>))}
       </section>
-      {slug === "3d-configurators" && (<section className="section wrap"><h2>Explore live product experiences</h2><p>See our lighting configurator and product sample websites before planning your own experience.</p><Link className="text-link" href="/configurators/">Browse configurator samples ↗</Link></section>)}
       <section className="section faq">
         <div className="wrap faq-layout">
           <div>

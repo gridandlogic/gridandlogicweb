@@ -2,19 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { configurators } from "@/app/data/configurators";
 import { StructuredData } from "@/app/components/StructuredData";
+import { ConfiguratorFaq, ConfiguratorLinks, enquiryUrl, lightingDemo, OfferTable } from "@/app/components/ConfiguratorOffer";
+import { solutionDescription, solutionFaq, solutionTitle } from "@/app/data/configurator-offers";
 
-const description =
-  "Explore live product configurator and ecommerce samples by Grid & Logic, including lighting, perfume, wallets, jewelry, and watches.";
+const path = "/configurators/";
+const packages = [
+  ["Preview", "One product family or lead generation", "3D viewer, agreed finish options, brand styling, and a buy or enquiry link.", "Fixed setup quote after asset review."],
+  ["Store", "Shopify or compatible headless stores", "Preview scope plus variant mapping, supported price and SKU updates, and tested add-to-cart behaviour.", "Setup and integration quote based on catalogue and storefront scope."],
+  ["Catalogue", "Modular lighting, furniture, or larger ranges", "Multiple families, compatibility rules, component choices, and a checkout or quote workflow.", "Quote based on product families, rules, and integration requirements."],
+];
 
 export const metadata = {
-  title: "Product Configurator Samples",
-  description,
-  alternates: { canonical: "/configurators/" },
+  title: solutionTitle,
+  description: solutionDescription,
+  alternates: { canonical: path },
   openGraph: {
     type: "website",
-    title: "Product Configurator Samples | Grid & Logic",
-    description,
-    url: "/configurators/",
+    title: solutionTitle + " | Grid & Logic",
+    description: solutionDescription,
+    url: path,
   },
 };
 
@@ -22,27 +28,50 @@ export default function ConfiguratorsPage() {
   return (
     <main id="main">
       <StructuredData
-        page={{
-          path: "/configurators/",
-          name: "Product configurator samples",
-          description,
-          type: "CollectionPage",
-        }}
+        page={{ path, name: solutionTitle, description: solutionDescription, type: "CollectionPage" }}
+        answers={solutionFaq}
       />
       <section className="page-hero">
         <div className="wrap">
-          <div className="breadcrumb">
-            <Link href="/">Home</Link> / Product configurators
+          <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link> / Product configurators</nav>
+          <h1>Buy a 3D product configurator for your ecommerce store</h1>
+          <p><strong>Grid &amp; Logic (Grid and Logic) is a digital agency and web development studio that adapts ready-to-deploy 3D web configurators for your products and storefront.</strong> Start with an existing foundation, then add your models, options, and buying rules.</p>
+          <div className="offer-actions">
+            <Link className="btn primary" href={enquiryUrl}>Get a package quote ↗</Link>
+            <a className="text-link" href={lightingDemo.url}>Try the live lighting demo ↗</a>
           </div>
-          <h1>Product configurator samples.</h1>
-          <p>
-            Explore live product experiences created by Grid &amp; Logic. Each
-            sample opens on its own website; the available options and
-            interactions depend on that experience.
-          </p>
         </div>
       </section>
-      <section className="section wrap">
+      <section className="section wrap offer-copy">
+        <h2>What can customers do with a 3D ecommerce configurator?</h2>
+        <p><strong>Customers can see supported changes in real time and get price and SKU updates when the configurator is connected to catalogue data.</strong> Send supported selections to the cart or capture a full specification for a sales quote.</p>
+        <ul>
+          <li><strong>Preview changes live.</strong> Let buyers inspect the model and switch available finishes, materials, or components.</li>
+          <li><strong>Show the right price and SKU.</strong> Map valid choices to store variants or approved pricing rules. The store validates the final purchase.</li>
+          <li><strong>Carry choices into the cart.</strong> Pass the selected variant and supported configuration details to Shopify or a compatible headless storefront. Check price, quantity, and order details before launch.</li>
+          <li><strong>Keep the product page responsive.</strong> Optimise models and textures, load interactive 3D when needed, and show a still image while it loads. Measure Core Web Vitals on representative devices.</li>
+        </ul>
+      </section>
+      <section className="section wrap offer-copy" id="packages">
+        <h2>Which 3D configurator package should you buy?</h2>
+        <p><strong>Choose Preview for product exploration, Store for checkout, or Catalogue for multiple product families.</strong> We quote after checking whether the package fits your product and storefront.</p>
+        <OfferTable caption="Compare 3D configurator packages" columns={["Package", "Best for", "Included scope", "Pricing"]} rows={packages} />
+        <p>Ask for an itemised quote for setup, model preparation, integration, testing, hosting, and any ongoing support.</p>
+        <Link className="btn primary" href={enquiryUrl}>Request a package quote ↗</Link>
+      </section>
+      <section className="section wrap offer-copy">
+        <h2>How do we go from demo to deployment?</h2>
+        <p><strong>Send one representative product and your store URL so we can check what fits the existing configurator and what needs adaptation.</strong></p>
+        <ol>
+          <li><strong>Try the demo.</strong> Note which interactions would help your customers.</li>
+          <li><strong>Send a sample product.</strong> Include photos or models, options, SKUs, and any compatibility rules.</li>
+          <li><strong>Review your quote.</strong> Confirm the package, fees, dependencies, and target launch date.</li>
+          <li><strong>Approve a working example.</strong> Review a representative configuration and its checkout or enquiry flow before going live.</li>
+        </ol>
+      </section>
+      <section className="section wrap offer-copy" id="demos">
+        <h2>Where can you see the configurator in action?</h2>
+        <p><strong>Open our Lighting Studio to browse a modular lighting catalogue and try configurable fixtures.</strong> The other samples show storefront design across different product categories.</p>
         <div className="configurator-sample-grid">
           {configurators.map((sample) => (
             <article className="configurator-sample" key={sample.slug}>
@@ -66,7 +95,7 @@ export default function ConfiguratorsPage() {
               <div className="eyebrow">
                 <span className="dot" /> {sample.category}
               </div>
-              <h2>{sample.name}</h2>
+              <h3>{sample.name}</h3>
               <p>{sample.description}</p>
               <a
                 className="text-link"
@@ -80,29 +109,11 @@ export default function ConfiguratorsPage() {
           ))}
         </div>
       </section>
-      <section className="section wrap">
-        <div className="content-grid">
-          <div>
-            <h2>What is a product configurator?</h2>
-            <p>
-              A product configurator lets a visitor explore a product and its
-              available choices in a digital experience. Grid &amp; Logic plans
-              each build around the product, the options customers need to
-              understand, and the business systems involved.
-            </p>
-          </div>
-          <div>
-            <h2>Planning a configurator for your products?</h2>
-            <p>
-              We can scope a browser-based product experience around your
-              catalogue, product assets, option rules, and customer journey.
-            </p>
-            <Link className="text-link" href="/services/3d-configurators/">
-              Learn about our 3D configurator service ↗
-            </Link>
-          </div>
-        </div>
-        <p className="configurator-author">Published by the Grid &amp; Logic team.</p>
+      <ConfiguratorFaq entries={solutionFaq} />
+      <section className="section wrap offer-copy">
+        <h2>Do you need a custom 3D build?</h2>
+        <p><strong>Our custom development service covers bespoke interfaces, complex assembly rules, and white-label agency work.</strong></p>
+        <ConfiguratorLinks />
       </section>
     </main>
   );
